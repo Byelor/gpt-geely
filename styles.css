@@ -582,8 +582,6 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   color: rgba(245, 245, 247, 0.65);
 }
 .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-6); }
-.cta__note { margin-top: var(--space-5); font-size: var(--fs-caption); color: rgba(245, 245, 247, 0.45); }
-.cta__note strong { color: rgba(245, 245, 247, 0.8); font-weight: 500; }
 
 /* ============================================================================
    РАЗДЕЛ 15. FAQ (АККОРДЕОН)

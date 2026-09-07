@@ -44,6 +44,7 @@
 
 - Telegram: `https://t.me/geelyhelpoff`
 - Instagram: `https://www.instagram.com/geely.help`
+- Threads: `https://www.threads.net/@geely.help`
 - TikTok: `https://www.tiktok.com/@geely.help`
 - YouTube (видеообзор): `https://youtu.be/U9wTJuGtl20`
 
@@ -54,7 +55,7 @@
 | СЕКЦИЯ 1 | кнопка «Записаться» в шапке |
 | СЕКЦИЯ 2 | кнопка «Записаться в Telegram» |
 | СЕКЦИЯ 5 | кнопка «Видеообзор на YouTube» |
-| СЕКЦИЯ 9 | три кнопки-контакта (тёмный блок) |
+| СЕКЦИЯ 9 | пять кнопок-контактов (тёмный блок) |
 | СЕКЦИЯ 11 | футер, колонка «Контакты» |
 | `<head>` → JSON-LD | поле `sameAs` |
 
