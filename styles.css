@@ -77,7 +77,8 @@
   --dur-base: 300ms;
   --dur-slow: 600ms;
   --dur-hero: 900ms;
-  --reveal-stagger: 80ms;  /* задержка между появлениями элементов в списках */
+  --reveal-stagger: 50ms;  /* задержка между появлениями элементов в списках */
+  --dur-reveal: 400ms;     /* длительность проявления одного блока (.reveal) */
 
   --header-h: 64px;
   --radius-card: 20px;
@@ -507,8 +508,8 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .step:not(:last-child)::before {
   background: var(--color-accent);
   transform: scaleX(0); transform-origin: left;
-  transition: transform 900ms var(--ease-decelerate);
-  transition-delay: calc(var(--i, 0) * 150ms);
+  transition: transform 500ms var(--ease-decelerate);
+  transition-delay: calc(var(--i, 0) * 80ms);
 }
 .steps.is-drawn .step:not(:last-child)::before { transform: scaleX(1); }
 /* --- Мобильная/планшетная версия: шаги в колонку -----------------------
@@ -729,7 +730,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
    ========================================================================== */
 html.js .reveal {
   opacity: 0; transform: translateY(24px);
-  transition: opacity var(--dur-slow) var(--ease-decelerate), transform var(--dur-slow) var(--ease-decelerate);
+  transition: opacity var(--dur-reveal) var(--ease-decelerate), transform var(--dur-reveal) var(--ease-decelerate);
   transition-delay: calc(var(--i, 0) * var(--reveal-stagger));
 }
 html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
