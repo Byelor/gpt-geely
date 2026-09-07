@@ -1,0 +1,7 @@
+# geelyhelp.by — все страницы открыты для индексации
+User-agent: *
+Allow: /
+Disallow:
+
+# Карта сайта
+Sitemap: https://geelyhelp.by/sitemap.xml

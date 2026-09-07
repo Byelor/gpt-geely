@@ -38,17 +38,42 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Geely Help Minsk — сделайте экран Geely EX2 умнее" />
   <meta property="og:description" content="Навигация, музыка, Wi-Fi и приложения на штатном экране Geely EX2. Установка — 100 р. Обновление ПО — 20 р. Минск." />
+  <link rel="canonical" href="https://geelyhelp.by/" />
+  <meta property="og:url" content="https://geelyhelp.by/" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="https://geelyhelp.by/img/gu-after.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="img/icon.png"/>
   <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.classList.add('js');</script>
-  <!-- Данные для поисковиков. При смене цен или ссылок — правьте и здесь. -->
+  <!-- Данные для поисковиков: бизнес (LocalBusiness) и блок FAQ (FAQPage).
+       При смене цен, ссылок или текстов вопросов — правьте и здесь. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://geelyhelp.by/#business",
     "name": "Geely Help Minsk",
-    "description": "Модификация ГУ и установка ПО для Geely EX2: приложения, навигация, кастомизация интерфейса.",
-    "areaServed": "Минск",
+    "url": "https://geelyhelp.by/",
+    "description": "Модификация головного устройства (ГУ) и установка ПО для Geely EX2: Яндекс Навигатор, Waze, музыка, Android Auto и CarPlay, Wi-Fi, кастомизация интерфейса. Минск и Гродно.",
+    "image": [
+      "https://geelyhelp.by/img/gu-after.png",
+      "https://geelyhelp.by/img/gu-after.webp",
+      "https://geelyhelp.by/img/gu-before.png",
+      "https://geelyhelp.by/img/gu-before.webp"
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Минск" },
+      { "@type": "City", "name": "Гродно" }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "url": "https://t.me/geelyhelpoff",
+        "availableLanguage": ["ru", "be"]
+      }
+    ],
     "priceRange": "20–100 BYN",
     "sameAs": [
       "https://t.me/geelyhelpoff",
@@ -58,8 +83,78 @@
       "https://www.youtube.com/@GeelyHelp"
     ],
     "makesOffer": [
-      { "@type": "Offer", "name": "Установка / переустановка ПО", "price": "100", "priceCurrency": "BYN" },
-      { "@type": "Offer", "name": "Обновление ПО / ремонт программной части", "price": "20", "priceCurrency": "BYN" }
+      {
+        "@type": "Offer",
+        "name": "Установка / переустановка ПО",
+        "price": "100",
+        "priceCurrency": "BYN",
+        "description": "Пакет приложений (навигация, музыка, магазины), настройка приложений и фиксов, Wi-Fi, кастомные обои и виджеты, лаунчер и кастомизация интерфейса, обучение. 30-60 минут."
+      },
+      {
+        "@type": "Offer",
+        "name": "Обновление ПО / ремонт программной части",
+        "price": "20",
+        "priceCurrency": "BYN",
+        "description": "Восстановление и обновление программной части головного устройства Geely EX2."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Это не отразится на гарантии?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Модификации можно скрыть перед поездкой к дилеру — я покажу и научу. Плюс расскажу про нюансы эксплуатации и предостерегу от возможных последствий." }
+      },
+      {
+        "@type": "Question",
+        "name": "Моя версия прошивки подойдёт?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Нужны последние версии от дилера — 1111 и 1114. Не знаете, какая у вас? Напишите в Telegram — проверим вместе. Если версия старее, сначала обновитесь у дилера (от 30 минут до 2 часов)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько времени всё занимает?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Сама установка и настройка — обычно 1–2 часа. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время." }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие приложения можно установить?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Навигаторы (Яндекс Навигатор, Waze), музыку (Яндекс Музыка, VLC), магазины приложений, виджеты, лаунчеры, браузеры, мониторинг автомобиля и многое другое. Точный список уточняйте в личных сообщениях." }
+      },
+      {
+        "@type": "Question",
+        "name": "Работают ли беспроводные CarPlay и Android Auto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да, покажу, как их подключить. Честно: работают не идеально, поэтому пока предпочтительнее проводные версии." }
+      },
+      {
+        "@type": "Question",
+        "name": "А если что-то сломается потом?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Есть услуга обновления ПО и ремонта программной части — 20 р. Пишите в любое время, помогу разобраться." }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли установить Яндекс Навигатор на штатную магнитолу Geely?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да, это одна из самых частых задач. Установлю Яндекс Навигатор или Waze на штатный экран Geely EX2, настрою запуск и голосовые команды и покажу, как пользоваться офлайн-картами." }
+      },
+      {
+        "@type": "Question",
+        "name": "Не работает Android Auto или CarPlay на Geely — что делать?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Беспроводные CarPlay и Android Auto на Geely EX2 работают с ограничениями — так устроена штатная система. Покажу, как их правильно подключить, а проводные версии настрою как более стабильный вариант. Если беспроводное подключение не заводится вовсе — напишите в Telegram, разберёмся." }
+      },
+      {
+        "@type": "Question",
+        "name": "Что входит в кастомизацию экрана Geely EX2?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Кастомные обои, виджеты — часы, погода, спидометр, — замена штатного рабочего стола на лаунчер: новая сетка иконок, док-панель, боковые шторки. Экран будет выглядеть так, как удобно именно вам." }
+      },
+      {
+        "@type": "Question",
+        "name": "Чем отличаются прошивки 1111 и 1114 для Geely EX2?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Это последние версии ПО от дилера: 1111 — для версии Pro, 1114 — для MAX. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас." }
+      }
     ]
   }
   </script>
@@ -119,7 +214,10 @@
                  в src (и здесь, и в слайдере, СЕКЦИЯ 5), а также width/height
                  под реальные размеры файла. Рекомендация: горизонтальное фото
                  шириной от 1200px. Текст alt — для скринридеров и поиска. -->
-            <img class="unit-photo" src="img/gu-after.png" alt="Настроенный экран Geely EX2: навигация, музыка и виджеты на штатной магнитоле" width="1362" height="785" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="img/gu-after.webp" />
+              <img class="unit-photo" src="img/gu-after.png" alt="Настроенный экран Geely EX2: навигация, музыка и виджеты на штатной магнитоле" width="1362" height="785" decoding="async" fetchpriority="high">
+            </picture>
           </div>
           <p class="hero__caption">Так может выглядеть ваш экран. <a class="inline-link" href="#demo">Сравните до и после</a></p>
         </div>
@@ -254,14 +352,20 @@
             <div class="ba__pane ba__before" aria-hidden="true">
               <!-- Левая половина: фото штатного экрана. Файл img/gu-before.png —
                    заглушка: положите своё фото (img/gu-before.jpg) и поправьте src. -->
-              <img class="unit-photo" src="img/gu-before.png" alt="" decoding="async">
+              <picture>
+                <source type="image/webp" srcset="img/gu-before.webp" />
+                <img class="unit-photo" src="img/gu-before.png" alt="" width="1253" height="765" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="ba__pane ba__after" aria-hidden="true">
               <!-- Правая половина: фото настроенного экрана (тот же файл,
                    что и в hero — см. комментарий в СЕКЦИИ 2). Левая половина —
                    фото штатного экрана (img/gu-before.png). Скрыто от скринридеров
                    целиком (aria-hidden выше). -->
-              <img class="unit-photo" src="img/gu-after.png" alt="" decoding="async">
+              <picture>
+                <source type="image/webp" srcset="img/gu-after.webp" />
+                <img class="unit-photo" src="img/gu-after.png" alt="" width="1362" height="785" loading="lazy" decoding="async">
+              </picture>
             </div>
             <span class="ba__tag ba__tag--before">До</span>
             <span class="ba__tag ba__tag--after">После</span>
@@ -414,7 +518,7 @@
             <h3 class="faq__heading">
               <button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">Сколько времени всё занимает?<span class="faq__icon" aria-hidden="true"></span></button>
             </h3>
-            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Сама установка и настройка — обычно 1–2 часа. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время.</p></div></div>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Сама установка и настройка — обычно 30-60 минут. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время.</p></div></div>
           </div>
           <div class="faq__item reveal">
             <h3 class="faq__heading">
@@ -432,7 +536,31 @@
             <h3 class="faq__heading">
               <button class="faq__q" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">А если что-то сломается потом?<span class="faq__icon" aria-hidden="true"></span></button>
             </h3>
-            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Есть услуга обновления ПО и ремонта программной части — 20 р. Пишите в любое время, помогу разобраться.</p></div></div>
+            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Есть услуга обновления ПО и ремонта программной части — 20 р. Пишите в любое время, помогу разобраться. По сути это и есть ремонт головного устройства Geely на уровне софта.</p></div></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">Можно ли установить Яндекс Навигатор на штатную магнитолу Geely?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div><p>Да, это одна из самых частых задач. Установлю Яндекс Навигатор или Waze на штатный экран Geely EX2, настрою запуск и голосовые команды и покажу, как пользоваться офлайн-картами.</p></div></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">Не работает Android Auto или CarPlay на Geely — что делать?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div><p>Беспроводные CarPlay и Android Auto на Geely EX2 работают с ограничениями — так устроена штатная система. Покажу, как их правильно подключить, а проводные версии настрою как более стабильный вариант. Если беспроводное подключение не заводится вовсе — напишите в Telegram, разберёмся.</p></div></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">Что входит в кастомизацию экрана Geely EX2?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div><p>Кастомные обои, виджеты — часы, погода, спидометр, — замена штатного рабочего стола на лаунчер: новая сетка иконок, док-панель, боковые шторки. Экран будет выглядеть так, как удобно именно вам.</p></div></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">Чем отличаются прошивки 1111 и 1114 для Geely EX2?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>Это последние версии ПО от дилера: 1111 — для версии Pro, 1114 — для MAX. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас.</p></div></div>
           </div>
         </div>
       </div>
