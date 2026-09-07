@@ -468,6 +468,14 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .ba__range::-moz-range-thumb { width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; }
 .ba:has(.ba__range:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 .demo__link { margin-top: var(--space-5); display: flex; justify-content: center; }
+/* Кнопка видеообзора: на узких экранах не должна распирать страницу —
+   разрешаем перенос текста и ограничиваем ширину; название канала
+   показываем только от 480px. */
+.demo__link .btn { white-space: normal; max-width: 100%; text-align: center; }
+.demo__btn-extra { display: none; }
+@media (min-width: 480px) {
+  .demo__btn-extra { display: inline; }
+}
 /* ============================================================================
    РАЗДЕЛ 12. ШАГИ «КАК ЭТО РАБОТАЕТ»
    Линия-коннектор: ::after — серая база, ::before — синяя заливка,
