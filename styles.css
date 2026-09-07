@@ -177,7 +177,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 .btn:active { transform: scale(0.97); }
 .btn--primary { background: var(--color-accent); color: #fff; }
 .btn--primary:hover { background: var(--color-accent-hover); }
-.btn--ghost { border-color: var(--color-border-strong); color: var(--color-text-primary); background: transparent; }
+.btn--ghost { border-color: var(--color-border-strong); color: var(--color-text-primary); background: transparent;}
 .btn--ghost:hover { background: var(--color-bg-secondary); }
 .btn--light { background: #f5f5f7; color: #1d1d1f; }
 .btn--light:hover { background: #ffffff; }
@@ -280,8 +280,8 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 }
 .hero__inner {
   position: relative;
-  display: grid; grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(var(--space-6), 6vw, var(--space-8));
+  display: grid; grid-template-columns: 0.9fr 1.1fr; /* визуалу — больше места */
+  gap: clamp(var(--space-5), 5vw, var(--space-6));
   align-items: center;
 }
 .hero__title {
@@ -303,7 +303,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .hero__facts span { font-size: var(--fs-caption); line-height: 1.4; color: var(--color-text-tertiary); max-width: 16em; }
 
 .hero__visual { display: flex; flex-direction: column; align-items: center; }
-.parallax { width: 100%; max-width: 560px; will-change: transform; }
+/* ГЛАВНЫЙ РЕГУЛЯТОР РАЗМЕРА ФОТО В HERO — max-width ниже
+   (ширина также ограничена колонкой грида .hero__inner) */
+.parallax { width: 100%; max-width: 760px; will-change: transform; }
 .hero__caption { margin-top: var(--space-4); font-size: var(--fs-caption); color: var(--color-text-tertiary); text-align: center; }
 
 @media (max-width: 1023px) {
@@ -519,7 +521,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .pricing__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); align-items: stretch; }
 .plan {
   position: relative;
-  display: flex; flex-direction: column; align-items: flex-start;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between;
   background: var(--color-bg);
   border-radius: var(--radius-card);
   padding: var(--space-6) var(--space-5);
