@@ -604,6 +604,18 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 }
 .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-6); }
 
+/* На узких экранах кнопки — ровной сеткой 2×2 («Telegram» сверху во всю
+   ширину), иначе 5 кнопок переносятся рядом 3+2 и силуэт выходит некрасивым. */
+@media (max-width: 767px) {
+  .cta__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  .cta__actions .btn--light { grid-column: 1 / -1; } /* Telegram — во всю ширину */
+}
+
 /* ============================================================================
    РАЗДЕЛ 15. FAQ (АККОРДЕОН)
    Раскрытие без max-height: grid-template-rows 0fr → 1fr (класс .is-open
