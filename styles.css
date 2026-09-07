@@ -501,13 +501,31 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   transition-delay: calc(var(--i, 0) * 150ms);
 }
 .steps.is-drawn .step:not(:last-child)::before { transform: scaleX(1); }
+/* --- Мобильная/планшетная версия: шаги в колонку -----------------------
+   Grid: колонка 1 (48px) — маркер и вертикальная линия,
+   колонка 2 — заголовок и описание. Линия физически живёт только
+   в колонке маркера и не может пересечь текст.
+   Линии: ::before (синяя, «дорисовывается» scaleY) поверх ::after (серая).
+   У последнего шага линии нет — см. селекторы :not(:last-child). */
 @media (max-width: 899px) {
-  .steps { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; row-gap: var(--space-6); }
+
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;      /* маркер | контент */
+    grid-template-rows: auto auto;        /* 1: заголовок, 2: описание */
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+  }
+  .step__num { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  .step h3 { grid-column: 2; grid-row: 1; align-self: center; }
+  .step p { grid-column: 2; grid-row: 2; }
+
   .step:not(:last-child)::before,
   .step:not(:last-child)::after {
-    left: 23.25px; right: auto;
-    top: calc(var(--space-2) + 48px + var(--space-4));
-    bottom: calc(-1 * var(--space-6) + 8px);
+    top: calc(var(--space-2) + 48px + var(--space-1));  /* от нижнего края маркера */
+    bottom: calc(-1 * var(--space-6) + 4px);            /* до маркера следующего шага */
+    left: 23.25px; right: auto;                          /* центр 48px-колонки */
     width: 1.5px; height: auto;
   }
   .step:not(:last-child)::before { transform: scaleY(0); transform-origin: top; }
