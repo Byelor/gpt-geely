@@ -1,5 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
+<!--
+  ============================================================================
+  GEELY HELP MINSK — лендинг (одна страница, без сборки и зависимостей)
+  ============================================================================
+
+  ФАЙЛЫ ПРОЕКТА
+    index.html  — разметка (этот файл); секции помечены «СЕКЦИЯ N»
+    styles.css  — стили; в начале — оглавление, настройки — в «РАЗДЕЛ 1»
+    script.js   — скрипты; в начале — CONFIG и блоки «БЛОК N»
+    README.md   — шпаргалка: как менять цены, ссылки, тексты
+
+  СОСТАВ СТРАНИЦЫ
+    СЕКЦИЯ 1   Шапка (меню + кнопка «Записаться»)
+    СЕКЦИЯ 2   Hero — первый экран
+    СЕКЦИЯ 3   Возможности (9 карточек + чипы приложений)
+    СЕКЦИЯ 4   Совместимость (требование к прошивке 1111/1114)
+    СЕКЦИЯ 5   До / После (слайдер)
+    СЕКЦИЯ 6   Безопасность (3 карточки)
+    СЕКЦИЯ 7   Как это работает (3 шага)
+    СЕКЦИЯ 8   Цены (2 тарифа)
+    СЕКЦИЯ 9   CTA — контакты (тёмный блок)
+    СЕКЦИЯ 10  FAQ (аккордеон)
+    СЕКЦИЯ 11  Футер
+
+  САМЫЕ ЧАСТЫЕ ПРАВКИ (подробности — в README.md):
+    • Цены:     СЕКЦИИ 2, 8, 10 + JSON-LD ниже в <head>
+    • Соцсети:  СЕКЦИИ 1, 2, 5, 9, 11 + JSON-LD (sameAs)
+    • Цвета:    styles.css, РАЗДЕЛ 1
+-->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +41,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230071e3'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='34' font-weight='600' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Данные для поисковиков. При смене цен или ссылок — правьте и здесь. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,6 +66,9 @@
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
 
+  <!-- ============================================================
+       СЕКЦИЯ 1. ШАПКА — при прокрутке становится «стеклом» (script.js, БЛОК 2).
+       ============================================================ -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a class="logo" href="#top" aria-label="Geely Help Minsk — к началу страницы">
@@ -58,10 +91,13 @@
   </header>
 
   <main id="main">
+  <!-- ============================================================
+       СЕКЦИЯ 2. HERO — ПЕРВЫЙ ЭКРАН — цены и ссылки дублируются в СЕКЦИЯХ 8, 9.
+       ============================================================ -->
     <section class="hero" id="top">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow reveal" style="--i:0">Минск · Geely EX2 · модификация ГУ и ПО</p>
+          <p class="eyebrow reveal" style="--i:0">Минск · Гродно · Беларусь · Geely EX2 · модификация ГУ и ПО</p>
           <h1 class="hero__title reveal" style="--i:1">Штатный экран вашего Geely станет умнее</h1>
           <p class="hero__lead reveal" style="--i:2">Установлю навигацию, музыку и любые приложения на штатную магнитолу Geely EX2. Настрою интерфейс под вас и научу, как всем пользоваться.</p>
           <div class="hero__actions reveal" style="--i:3">
@@ -76,45 +112,20 @@
         </div>
         <div class="hero__visual reveal" style="--i:4">
           <div class="parallax" data-parallax>
-            <div class="unit" role="img" aria-label="Пример настроенного экрана Geely EX2: карта с маршрутом, музыка, часы и погода">
-              <div class="unit__bar" aria-hidden="true"><span>18:47</span><span class="unit__dots"><i></i><i></i><i></i></span></div>
-              <div class="unit__grid" aria-hidden="true">
-                <div class="widget widget--map">
-                  <svg viewBox="0 0 220 120" preserveAspectRatio="none">
-                    <path d="M-10 95 C 40 88, 70 60, 110 62 S 180 40, 235 18" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10"/>
-                    <path d="M20 118 C 60 108, 78 84, 118 88" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="8"/>
-                    <path d="M-10 40 C 50 34, 90 10, 235 60" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
-                    <path d="M28 104 C 66 96, 84 70, 122 72 S 190 46, 232 26" fill="none" stroke="#4da3ff" stroke-width="5" stroke-linecap="round"/>
-                    <circle cx="28" cy="104" r="5" fill="#fff"/>
-                    <circle cx="232" cy="26" r="5" fill="#fff" stroke="#4da3ff" stroke-width="3"/>
-                  </svg>
-                  <span class="widget__chip">12 мин · 4 км</span>
-                  <span class="widget__brand">Яндекс Навигатор</span>
-                </div>
-                <div class="widget widget--music">
-                  <div class="widget__row">
-                    <span class="widget__cover"></span>
-                    <span class="widget__meta"><strong>Плейлист «Мне нравится»</strong><span>Яндекс Музыка</span></span>
-                  </div>
-                  <span class="widget__progress"><i></i></span>
-                </div>
-                <div class="widget widget--clock">
-                  <span class="big">18:47</span>
-                  <span class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>21° · Минск</span>
-                </div>
-              </div>
-              <div class="unit__dock" aria-hidden="true">
-                <span class="dock__icon dock__icon--nav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3 3 10.53l7.5 2.97L13.47 21 21 3Z"/></svg></span>
-                <span class="dock__icon dock__icon--music"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18.5V6l11-2v12.5"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="16.5" r="2.5"/></svg></span>
-                <span class="dock__icon dock__icon--phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg></span>
-                <span class="dock__icon dock__icon--apps"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span>
-              </div>
-            </div>
+            <!-- ФОТО НАСТРОЕННОГО ЭКРАНА: img/gu-after.png (уже подключён).
+                 Чтобы заменить — положите новый файл в img/ и поправьте путь
+                 в src (и здесь, и в слайдере, СЕКЦИЯ 5), а также width/height
+                 под реальные размеры файла. Рекомендация: горизонтальное фото
+                 шириной от 1200px. Текст alt — для скринридеров и поиска. -->
+            <img class="unit-photo" src="img/gu-after.png" alt="Настроенный экран Geely EX2: навигация, музыка и виджеты на штатной магнитоле" width="1362" height="785" decoding="async">
           </div>
           <p class="hero__caption">Так может выглядеть ваш экран. <a class="inline-link" href="#demo">Сравните до и после</a></p>
         </div>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 3. ВОЗМОЖНОСТИ — карточку добавляйте копированием <article class="card">.
+       ============================================================ -->
     <section class="section" id="benefits">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -153,6 +164,21 @@
             <h3>Звук лучше штатного</h3>
             <p>Эквалайзеры и аудиоэффекты поверх штатной аудиосистемы — настроим звук под ваш вкус.</p>
           </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1"/><path d="M12 19v3"/><path d="M8 22h8"/></svg></span>
+            <h3>Голосовой ввод и команды</h3>
+            <p>Голосовые команды для навигатора и музыки. Управляйте экраном, не отвлекаясь от дороги.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+            <h3>Видеорегистратор</h3>
+            <p>Приложение-регистратор на экране ГУ: запись дороги, автозапуск при включении и циклическая перезапись.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg></span>
+            <h3>Разделение экрана</h3>
+            <p>Навигатор и музыка рядом и множество других сочетаний — два приложения на одном экране одновременно.</p>
+          </article>
         </div>
         <p class="chips-note reveal">Примеры того, что можно установить:</p>
         <div class="chips reveal" role="list">
@@ -168,10 +194,14 @@
           <span class="chip" role="listitem">Браузеры</span>
           <span class="chip" role="listitem">Виджеты и часы</span>
           <span class="chip" role="listitem">Голосовое управление</span>
+          <span class="chip" role="listitem">Видеорегистратор</span>
           <span class="chip" role="listitem">Разделение экрана</span>
         </div>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 4. СОВМЕСТИМОСТЬ — требование прошивки 1111/1114.
+       ============================================================ -->
     <section class="section section--secondary" id="compat">
       <div class="container compat__layout">
         <div class="reveal">
@@ -205,6 +235,9 @@
         </div>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 5. ДО / ПОСЛЕ — СЛАЙДЕР — двигает невидимый input.ba__range (script.js, БЛОК 7).
+       ============================================================ -->
     <section class="section" id="demo">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -215,55 +248,16 @@
         <div class="ba-wrap reveal">
           <div class="ba" role="group" aria-label="Сравнение штатного экрана и экрана после модификации. Перетаскивайте разделитель или используйте стрелки клавиатуры.">
             <div class="ba__pane ba__before" aria-hidden="true">
-              <div class="stock">
-                <div class="stock__bar"><span>FM 103.7</span><span>18:47</span></div>
-                <div class="stock__grid">
-                  <div class="stock__tile"><i></i><span>Радио</span></div>
-                  <div class="stock__tile"><i></i><span>Медиа</span></div>
-                  <div class="stock__tile"><i></i><span>Телефон</span></div>
-                  <div class="stock__tile"><i></i><span>Навигация</span></div>
-                  <div class="stock__tile"><i></i><span>Bluetooth</span></div>
-                  <div class="stock__tile"><i></i><span>Файлы</span></div>
-                  <div class="stock__tile"><i></i><span>Wi-Fi</span></div>
-                  <div class="stock__tile"><i></i><span>Настройки</span></div>
-                </div>
-              </div>
+              <!-- Левая половина: фото штатного экрана. Файл img/gu-before.svg —
+                   заглушка: положите своё фото (img/gu-before.jpg) и поправьте src. -->
+              <img class="unit-photo" src="img/gu-before.svg" alt="" decoding="async">
             </div>
             <div class="ba__pane ba__after" aria-hidden="true">
-              <div class="unit">
-                <div class="unit__bar"><span>18:47</span><span class="unit__dots"><i></i><i></i><i></i></span></div>
-                <div class="unit__grid">
-                  <div class="widget widget--map">
-                    <svg viewBox="0 0 220 120" preserveAspectRatio="none">
-                      <path d="M-10 95 C 40 88, 70 60, 110 62 S 180 40, 235 18" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10"/>
-                      <path d="M20 118 C 60 108, 78 84, 118 88" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="8"/>
-                      <path d="M-10 40 C 50 34, 90 10, 235 60" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
-                      <path d="M28 104 C 66 96, 84 70, 122 72 S 190 46, 232 26" fill="none" stroke="#4da3ff" stroke-width="5" stroke-linecap="round"/>
-                      <circle cx="28" cy="104" r="5" fill="#fff"/>
-                      <circle cx="232" cy="26" r="5" fill="#fff" stroke="#4da3ff" stroke-width="3"/>
-                    </svg>
-                    <span class="widget__chip">12 мин · 4 км</span>
-                    <span class="widget__brand">Яндекс Навигатор</span>
-                  </div>
-                  <div class="widget widget--music">
-                    <div class="widget__row">
-                      <span class="widget__cover"></span>
-                      <span class="widget__meta"><strong>Плейлист «Мне нравится»</strong><span>Яндекс Музыка</span></span>
-                    </div>
-                    <span class="widget__progress"><i></i></span>
-                  </div>
-                  <div class="widget widget--clock">
-                    <span class="big">18:47</span>
-                    <span class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>21° · Минск</span>
-                  </div>
-                </div>
-                <div class="unit__dock">
-                  <span class="dock__icon dock__icon--nav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3 3 10.53l7.5 2.97L13.47 21 21 3Z"/></svg></span>
-                  <span class="dock__icon dock__icon--music"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18.5V6l11-2v12.5"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="16.5" r="2.5"/></svg></span>
-                  <span class="dock__icon dock__icon--phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg></span>
-                  <span class="dock__icon dock__icon--apps"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span>
-                </div>
-              </div>
+              <!-- Правая половина: фото настроенного экрана (тот же файл,
+                   что и в hero — см. комментарий в СЕКЦИИ 2). Левая половина —
+                   фото штатного экрана (img/gu-before.svg). Скрыто от скринридеров
+                   целиком (aria-hidden выше). -->
+              <img class="unit-photo" src="img/gu-after.png" alt="" decoding="async">
             </div>
             <span class="ba__tag ba__tag--before">До</span>
             <span class="ba__tag ba__tag--after">После</span>
@@ -278,6 +272,9 @@
         </p>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 6. БЕЗОПАСНОСТЬ
+       ============================================================ -->
     <section class="section section--secondary" id="safety">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -305,6 +302,9 @@
       </div>
     </section>
 
+  <!-- ============================================================
+       СЕКЦИЯ 7. КАК ЭТО РАБОТАЕТ — линия «дорисовывается» атрибутом data-draw (script.js, БЛОК 4).
+       ============================================================ -->
     <section class="section" id="steps">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -331,6 +331,9 @@
         </ol>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 8. ЦЕНЫ — суммы дублируются в СЕКЦИИ 2, СЕКЦИИ 10 и JSON-LD.
+       ============================================================ -->
     <section class="section section--secondary" id="prices">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -362,6 +365,9 @@
         <p class="pricing__note reveal">Точный список приложений уточняйте в личных сообщениях. Учитываю все пожелания и потребности при установке ПО и кастомизации.</p>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 9. CTA — КОНТАКТЫ — кнопки-мессенджеры, продублированы в футере.
+       ============================================================ -->
     <section class="section" aria-label="Контакты">
       <div class="container">
         <div class="cta__card reveal">
@@ -376,6 +382,9 @@
         </div>
       </div>
     </section>
+  <!-- ============================================================
+       СЕКЦИЯ 10. FAQ — АККОРДЕОН — новый вопрос = копия .faq__item с новым id.
+       ============================================================ -->
     <section class="section" id="faq">
       <div class="container">
         <div class="section__head section__head--center reveal">
@@ -424,6 +433,9 @@
     </section>
     </main>
 
+  <!-- ============================================================
+       СЕКЦИЯ 11. ФУТЕР — ссылки-контакты, копирайт (год ставит script.js, БЛОК 8).
+       ============================================================ -->
     <footer class="footer">
       <div class="container">
         <div class="footer__top">

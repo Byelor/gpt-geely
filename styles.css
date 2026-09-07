@@ -1,9 +1,41 @@
-/* ==========================================================================
-   Geely Help Minsk — landing
-   Apple-style design system: auto light/dark, fluid type, 8px scale
+/* ============================================================================
+   GEELY HELP MINSK — стили лендинга
+   ----------------------------------------------------------------------------
+
+   СОДЕРЖАНИЕ (быстрый поиск по слову «РАЗДЕЛ»):
+
+     РАЗДЕЛ 1   Токены дизайна — ЦВЕТА, ШРИФТЫ, ОТСТУПЫ, СКОРОСТЬ АНИМАЦИЙ
+     РАЗДЕЛ 2   Сброс стилей браузера и базовая типографика
+     РАЗДЕЛ 3   Служебное: контейнер, секции, кнопки, skip-link
+     РАЗДЕЛ 4   Шапка и меню
+     РАЗДЕЛ 5   Hero (первый экран)
+     РАЗДЕЛ 6   Макет экрана ГУ «после» (.unit) — рисуется на CSS, без картинок
+     РАЗДЕЛ 7   Фото половин слайдера «До / После»
+     РАЗДЕЛ 8   Карточки (.card) — «Возможности» и «Безопасность»
+     РАЗДЕЛ 9   Чипы «Примеры приложений»
+     РАЗДЕЛ 10  Совместимость (проверка прошивки)
+     РАЗДЕЛ 11  Слайдер «До / После»
+     РАЗДЕЛ 12  Шаги «Как это работает»
+     РАЗДЕЛ 13  Тарифы (цены)
+     РАЗДЕЛ 14  Финальный CTA (контакты)
+     РАЗДЕЛ 15  FAQ (аккордеон)
+     РАЗДЕЛ 16  Футер
+     РАЗДЕЛ 17  Адаптив: сетки и крупный шрифт на телефонах
+     РАЗДЕЛ 18  Анимация появления блоков при прокрутке (.reveal)
+     РАЗДЕЛ 19  prefers-reduced-motion — НЕ УДАЛЯТЬ
+
+   ГЛАВНОЕ:
+   • Цвета, шрифты и отступы меняются только в РАЗДЕЛЕ 1 — остальное их читает.
+   • Акцентный цвет на сайте ровно один: --color-accent.
+   • Тёмная тема включается сама (prefers-color-scheme), значения — в РАЗДЕЛЕ 1.
+   • Анимации построены только на transform/opacity — они не тормозят страницу.
+   • Именование классов: блок__элемент--модификатор (БЭМ-подобное).
+   • Адаптивные правила лежат рядом со своими компонентами (@media в разделах).
    ========================================================================== */
 
-/* ---------- Design tokens ---------- */
+/* ============================================================================
+   РАЗДЕЛ 1. ТОКЕНЫ ДИЗАЙНА — меняйте значения здесь, весь сайт подхватит
+   ========================================================================== */
 :root {
   --color-bg: #ffffff;
   --color-bg-secondary: #f5f5f7;
@@ -44,6 +76,7 @@
   --dur-base: 300ms;
   --dur-slow: 600ms;
   --dur-hero: 900ms;
+  --reveal-stagger: 80ms;  /* задержка между появлениями элементов в списках */
 
   --header-h: 64px;
   --radius-card: 20px;
@@ -69,7 +102,9 @@
   }
 }
 
-/* ---------- Reset & base ---------- */
+/* ============================================================================
+   РАЗДЕЛ 2. СБРОС СТИЛЕЙ И БАЗОВАЯ ТИПОГРАФИКА
+   ========================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -94,7 +129,9 @@ strong { font-weight: 600; }
 :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 6px; }
 :focus:not(:focus-visible) { outline: none; }
 
-/* ---------- Layout shells ---------- */
+/* ============================================================================
+   РАЗДЕЛ 3. СЛУЖЕБНОЕ: КОНТЕЙНЕР, СЕКЦИИ, ЗАГОЛОВКИ, ССЫЛКИ
+   ========================================================================== */
 .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: max(24px, 5vw); }
 .section { padding-block: clamp(var(--space-7), 10vw, var(--space-9)); }
 .section--secondary { background: var(--color-bg-secondary); }
@@ -107,7 +144,8 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 .inline-link { color: var(--color-accent); text-decoration: none; }
 .inline-link:hover { text-decoration: underline; }
 
-/* ---------- Skip link ---------- */
+/* Ссылка «Перейти к содержимому»: видна только при фокусе с клавиатуры.
+   Не удалять — это доступность (первый элемент в <body>). */
 .skip-link {
   position: fixed; left: 16px; top: -64px; z-index: 300;
   padding: 12px 20px; border-radius: 980px;
@@ -117,7 +155,10 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 }
 .skip-link:focus-visible { top: 12px; }
 
-/* ---------- Buttons ---------- */
+/* ============================================================================
+   РАЗДЕЛ 3а. КНОПКИ (.btn)
+   Пилюля 980px — фирменная форма. :active сжимает кнопку — тактильный отклик.
+   ========================================================================== */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; padding: 12px 24px;
@@ -141,7 +182,12 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 .btn--ghost-dark { border-color: rgba(255, 255, 255, 0.35); color: #fff; background: transparent; }
 .btn--ghost-dark:hover { background: rgba(255, 255, 255, 0.1); }
 .btn--header { min-height: 40px; padding: 10px 18px; font-size: 1rem; }
-/* ---------- Header ---------- */
+/* ============================================================================
+   РАЗДЕЛ 4. ШАПКА И МЕНЮ
+   Фиксированная. Класс .is-scrolled (ставит script.js, БЛОК 2) включает
+   «стекло»: blur-фон + сжатие 64px → 48px. Ниже 900px меню превращается
+   в выпадающую панель (класс nav-open на <body>, script.js, БЛОК 3).
+   ========================================================================== */
 .header {
   position: fixed; inset: 0 0 auto 0; z-index: 100;
   transition: background var(--dur-base) var(--ease-standard),
@@ -213,7 +259,11 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 @media (max-width: 479px) {
   .logo__text em { display: none; }
 }
-/* ---------- Hero ---------- */
+/* ============================================================================
+   РАЗДЕЛ 5. HERO (ПЕРВЫЙ ЭКРАН)
+   [data-parallax] двигает картинку при прокрутке (script.js, БЛОК 5) —
+   только на экранах ≥1024px и при выключенном prefers-reduced-motion.
+   ========================================================================== */
 .hero { position: relative; overflow: clip; padding-block: clamp(var(--space-7), 8vw, var(--space-9)); }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -258,88 +308,34 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 @media (max-width: 639px) {
   .hero__facts { gap: var(--space-4) var(--space-5); }
 }
-/* ---------- Head unit mockup (настроенный экран) ---------- */
-.unit {
-  position: relative;
-  display: flex; flex-direction: column; gap: 3%;
-  aspect-ratio: 16 / 9; padding: 3.5%;
-  border-radius: clamp(14px, 2vw, 24px); overflow: hidden;
-  font-size: clamp(8px, 0.9vw, 12px);
-  color: #f5f5f7; user-select: none;
-  background:
-    radial-gradient(120% 150% at 85% -20%, #22345c 0%, transparent 55%),
-    radial-gradient(130% 130% at -15% 115%, #33265c 0%, transparent 55%),
-    #0b0b0f;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+/* ============================================================================
+   РАЗДЕЛ 6. ФОТО ЭКРАНА ГУ (.unit-photo)
+   Фото настроенного экрана: в hero (СЕКЦИЯ 2) и в правой половине
+   слайдера «До / После» (СЕКЦИЯ 5). Файлы лежат в папке img/,
+   пути — в разметке index.html.
+   ========================================================================== */
+.unit-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: clamp(14px, 2vw, 24px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.5);
 }
-.unit__bar { display: flex; justify-content: space-between; align-items: center; padding: 0 0.3em; font-size: 1em; opacity: 0.75; }
-.unit__dots { display: inline-flex; gap: 0.45em; }
-.unit__dots i { width: 0.5em; height: 0.5em; border-radius: 50%; background: currentColor; }
-.unit__grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 4.5%; }
+/* ============================================================================
+   РАЗДЕЛ 7. ФОТО ПОЛОВИН СЛАЙДЕРА «ДО / ПОСЛЕ»
+   Фото штатного и настроенного экранов заполняют свои половины слайдера
+   без искажений (object-fit: cover). Файлы — img/gu-before.svg и
+   img/gu-after.svg (сейчас заглушки), пути — в index.html, СЕКЦИЯ 5.
+   ========================================================================== */
+.ba__pane .unit-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: 0;
+}
 
-.widget {
-  position: relative; min-height: 0; overflow: hidden;
-  display: flex; flex-direction: column;
-  padding: 1em 1.1em; border-radius: 1.1em;
-  background: rgba(255, 255, 255, 0.08);
-}
-.widget--map { grid-row: 1 / -1; padding: 0; background: linear-gradient(160deg, #17325c 0%, #0d1830 75%); }
-.widget--map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.widget__brand { position: absolute; top: 1em; left: 1.1em; font-size: 0.85em; opacity: 0.6; }
-.widget__chip { position: absolute; left: 1.1em; bottom: 1em; padding: 0.4em 0.8em; border-radius: 99em; background: rgba(0, 0, 0, 0.55); font-size: 0.9em; }
-.widget--music { justify-content: space-between; gap: 0.8em; }
-.widget__row { display: flex; align-items: center; gap: 0.8em; min-width: 0; }
-.widget__cover { flex: none; width: 2.7em; height: 2.7em; border-radius: 0.7em; background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
-.widget__meta { min-width: 0; display: flex; flex-direction: column; gap: 0.15em; }
-.widget__meta strong { font-size: 0.95em; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.widget__meta span { font-size: 0.8em; opacity: 0.6; }
-.widget__progress { height: 0.4em; border-radius: 99em; background: rgba(255, 255, 255, 0.18); overflow: hidden; }
-.widget__progress i { display: block; width: 62%; height: 100%; border-radius: inherit; background: #fff; }
-.widget--clock { justify-content: center; gap: 0.5em; }
-.widget--clock .big { font-size: 2.3em; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
-.widget--clock .sub { display: flex; align-items: center; gap: 0.5em; font-size: 0.9em; opacity: 0.7; }
-.widget--clock .sub svg { width: 1.2em; height: 1.2em; }
-
-.unit__dock { display: flex; justify-content: center; gap: 1.3em; padding: 0.3em 0 0; }
-.dock__icon {
-  width: 2.9em; height: 2.9em; border-radius: 0.9em;
-  display: grid; place-items: center; color: #fff;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-}
-.dock__icon svg { width: 1.5em; height: 1.5em; }
-.dock__icon--nav { background: linear-gradient(135deg, #2f80ed, #56ccf2); }
-.dock__icon--music { background: linear-gradient(135deg, #f5576c, #f093fb); }
-.dock__icon--phone { background: linear-gradient(135deg, #11998e, #38ef7d); }
-.dock__icon--apps { background: rgba(255, 255, 255, 0.16); }
-/* ---------- Head unit mockup (штатный экран) ---------- */
-.stock {
-  position: relative;
-  display: flex; flex-direction: column;
-  aspect-ratio: 16 / 9;
-  border-radius: clamp(14px, 2vw, 24px); overflow: hidden;
-  font-size: clamp(8px, 0.9vw, 12px);
-  color: #48484d; user-select: none;
-  background: #e9e9ee;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-}
-.stock__bar {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 2.5% 4%;
-  font-size: 0.95em; color: #6e6e73;
-  background: #f2f2f7;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-.stock__grid { flex: 1 1 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4%; padding: 5%; align-content: center; }
-.stock__tile {
-  display: flex; flex-direction: column; align-items: center; gap: 0.8em;
-  padding: 1.2em 0.4em 1em; border-radius: 1em;
-  background: #f7f7fa;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-.stock__tile i { width: 2.4em; height: 2.4em; border-radius: 0.8em; background: #d9d9de; }
-.stock__tile span { font-size: 0.85em; color: #86868b; }
-
-/* ---------- Cards (возможности, безопасность) ---------- */
+/* ============================================================================
+   РАЗДЕЛ 8. КАРТОЧКИ (.card) — «Возможности» и «Безопасность»
+   Hover-подъём включён только для устройств с мышью (@media hover).
+   ========================================================================== */
 .benefits__grid, .safety__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
 .card {
   background: var(--color-bg);
@@ -362,7 +358,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
 }
 
-/* ---------- Chips ---------- */
+/* ============================================================================
+   РАЗДЕЛ 9. ЧИПЫ «ПРИМЕРЫ ПРИЛОЖЕНИЙ»
+   ========================================================================== */
 .chips-note { margin-top: var(--space-7); text-align: center; font-size: var(--fs-caption); color: var(--color-text-tertiary); }
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: var(--space-3); }
 .chip {
@@ -372,7 +370,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   font-size: var(--fs-caption); color: var(--color-text-secondary);
 }
 
-/* ---------- Compatibility ---------- */
+/* ============================================================================
+   РАЗДЕЛ 10. СОВМЕСТИМОСТЬ (проверка прошивки 1111/1114)
+   ========================================================================== */
 .compat__layout {
   display: grid; grid-template-columns: 1.05fr 0.95fr;
   gap: clamp(var(--space-5), 5vw, var(--space-7));
@@ -407,7 +407,13 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .warn p { color: var(--color-text-secondary); font-size: 1rem; line-height: 1.6; }
 .warn p + p { margin-top: var(--space-3); }
 .warn strong { color: var(--color-text-primary); }
-/* ---------- Before / After slider ---------- */
+/* ============================================================================
+   РАЗДЕЛ 11. СЛАЙДЕР «ДО / ПОСЛЕ»
+   Правая половина (.ba__after) обрезается clip-path; положением управляет
+   невидимый <input class="ba__range"> — он же даёт клавиатуру и тач.
+   Позиция хранится в переменной --pos (ставит script.js, БЛОК 7).
+   Фото обеих половин — РАЗДЕЛ 7.
+   ========================================================================== */
 .ba-wrap { max-width: 880px; margin-inline: auto; }
 .ba {
   position: relative; aspect-ratio: 16 / 9;
@@ -418,12 +424,6 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   touch-action: pan-y;
 }
 .ba__pane { position: absolute; inset: 0; }
-.ba__pane .unit,
-.ba__pane .stock {
-  aspect-ratio: auto; height: 100%; width: 100%;
-  border-radius: 0; box-shadow: none;
-  font-size: clamp(9px, 1.35vw, 15px);
-}
 .ba__after { clip-path: inset(0 0 0 55%); }
 .ba__tag {
   position: absolute; top: 16px; z-index: 2;
@@ -459,7 +459,12 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .ba__range::-moz-range-thumb { width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; }
 .ba:has(.ba__range:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 .demo__link { margin-top: var(--space-5); display: flex; justify-content: center; }
-/* ---------- Steps ---------- */
+/* ============================================================================
+   РАЗДЕЛ 12. ШАГИ «КАК ЭТО РАБОТАЕТ»
+   Линия-коннектор: ::after — серая база, ::before — синяя заливка,
+   которая «дорисовывается» (scaleX 0→1), когда шаги попали в экран.
+   Включает её класс .is-drawn (script.js, БЛОК 4, атрибут data-draw).
+   ========================================================================== */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 .step { position: relative; padding-top: var(--space-2); }
 .step__num {
@@ -500,7 +505,11 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   .step:not(:last-child)::before { transform: scaleY(0); transform-origin: top; }
   .steps.is-drawn .step:not(:last-child)::before { transform: scaleY(1); }
 }
-/* ---------- Pricing ---------- */
+/* ============================================================================
+   РАЗДЕЛ 13. ТАРИФЫ
+   Рамка-градиент рекомендуемого тарифа — псевдоэлемент ::before с маской
+   (padding: 1.5px + mask-composite: exclude) — без лишней разметки.
+   ========================================================================== */
 .pricing__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); align-items: stretch; }
 .plan {
   position: relative;
@@ -546,7 +555,10 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 @media (max-width: 899px) {
   .pricing__grid { grid-template-columns: 1fr; }
 }
-/* ---------- CTA ---------- */
+/* ============================================================================
+   РАЗДЕЛ 14. ФИНАЛЬНЫЙ CTA (КОНТАКТЫ)
+   Тёмная карточка-баннер: #000 в светлой теме, #1d1d1f в тёмной.
+   ========================================================================== */
 .cta__card {
   position: relative; overflow: hidden;
   background: #000; color: #f5f5f7;
@@ -567,7 +579,11 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .cta__note { margin-top: var(--space-5); font-size: var(--fs-caption); color: rgba(245, 245, 247, 0.45); }
 .cta__note strong { color: rgba(245, 245, 247, 0.8); font-weight: 500; }
 
-/* ---------- FAQ ---------- */
+/* ============================================================================
+   РАЗДЕЛ 15. FAQ (АККОРДЕОН)
+   Раскрытие без max-height: grid-template-rows 0fr → 1fr (класс .is-open
+   ставит script.js, БЛОК 6). Плюс/минус нарисован псевдоэлементами .faq__icon.
+   ========================================================================== */
 .faq { max-width: 760px; margin-inline: auto; border-top: 1px solid var(--color-divider); }
 .faq__item { border-bottom: 1px solid var(--color-divider); }
 .faq__heading { font-size: inherit; font-weight: inherit; }
@@ -601,7 +617,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .faq__a > div { overflow: hidden; min-height: 0; }
 .faq__a p { padding: 0 0 var(--space-4); color: var(--color-text-secondary); font-size: 1rem; line-height: 1.6; max-width: 60em; }
 .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
-/* ---------- Footer ---------- */
+/* ============================================================================
+   РАЗДЕЛ 16. ФУТЕР
+   ========================================================================== */
 .footer {
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-divider);
@@ -635,7 +653,13 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   .footer__top { grid-template-columns: 1fr; }
 }
 
-/* ---------- Responsive grids ---------- */
+/* ============================================================================
+   РАЗДЕЛ 17. АДАПТИВ: СВОДКА
+   Брейкпоинты: 479px · 559px · 639px (телефоны) · 899px (планшет) · 1023px.
+   На телефонах (≤639px) корневой шрифт увеличен до 17.5px — все rem-размеры
+   растут пропорционально (аудитория старшая, зрение). Больше адаптивных правил —
+   рядом с компонентами в разделах выше.
+   ========================================================================== */
 @media (max-width: 1023px) {
   .benefits__grid, .safety__grid { grid-template-columns: repeat(2, 1fr); }
   .compat__layout { grid-template-columns: 1fr; }
@@ -649,16 +673,24 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   html { font-size: 17.5px; }
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ============================================================================
+   РАЗДЕЛ 18. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ ПРОКРУТКЕ (.reveal)
+   Классы ставит script.js (БЛОК 4). Правило обёрнуто в html.js — без
+   JavaScript контент виден сразу, без «прыжка» из невидимого состояния.
+   Очередь появления — токен --reveal-stagger (РАЗДЕЛ 1).
+   ========================================================================== */
 html.js .reveal {
   opacity: 0; transform: translateY(24px);
   transition: opacity var(--dur-slow) var(--ease-decelerate), transform var(--dur-slow) var(--ease-decelerate);
-  transition-delay: calc(var(--i, 0) * 80ms);
+  transition-delay: calc(var(--i, 0) * var(--reveal-stagger));
 }
 html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
 html.js .reveal.is-shown { transition: none; }
 
-/* ---------- Reduced motion (обязательно) ---------- */
+/* ============================================================================
+   РАЗДЕЛ 19. PREFERS-REDUCED-MOTION — НЕ УДАЛЯТЬ
+   У пользователей с опцией «уменьшить движение» все анимации выключаются.
+   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

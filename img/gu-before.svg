@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630">
+  <!-- ЗАГЛУШКА: замените этот файл фото штатного экрана «до модификации»
+       (img/gu-before.jpg) и поправьте расширение в src в index.html. -->
+  <rect width="1120" height="630" fill="#e9e9ee"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="560" y="295" font-size="34" font-weight="600" fill="#48484d">Здесь будет фото штатного экрана</text>
+    <text x="560" y="345" font-size="22" fill="#86868b">Положите файл в папку img/ и поменяйте путь в index.html</text>
+  </g>
+</svg>
