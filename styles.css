@@ -351,7 +351,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   background: var(--color-bg);
   border-radius: var(--radius-card);
   padding: var(--space-5);
-  box-shadow: var(--shadow-card);
+  /* Тонкая рамка (hairline) + тень — чтобы белые карточки не сливались
+     с белым фоном секции. Рамка сохраняется и при hover. */
+  box-shadow: var(--shadow-card), inset 0 0 0 1px var(--color-divider);
   transition: transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
 }
 .card__icon {
@@ -365,7 +367,10 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .card h3 { font-size: 1.25rem; letter-spacing: -0.01em; margin-bottom: var(--space-2); }
 .card p { color: var(--color-text-secondary); font-size: 1rem; line-height: 1.5; }
 @media (hover: hover) {
-  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover), inset 0 0 0 1px var(--color-divider);
+  }
 }
 
 /* ============================================================================
