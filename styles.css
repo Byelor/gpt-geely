@@ -600,17 +600,14 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 }
 /* ============================================================================
    РАЗДЕЛ 14. ФИНАЛЬНЫЙ CTA (КОНТАКТЫ)
-   Тёмная карточка-баннер: #000 в светлой теме, #1d1d1f в тёмной.
+   Тёмная карточка-баннер: #1d1d1f в обеих темах.
    ========================================================================== */
 .cta__card {
   position: relative; overflow: hidden;
-  background: #000; color: #f5f5f7;
+  background: #1d1d1f; color: #f5f5f7;
   border-radius: 28px;
   padding: clamp(var(--space-7), 9vw, var(--space-9)) var(--space-5);
   text-align: center;
-}
-@media (prefers-color-scheme: dark) {
-  .cta__card { background: #1d1d1f; }
 }
 .cta__card h2 { font-size: var(--fs-h1); text-wrap: balance; }
 .cta__card > p {
