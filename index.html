@@ -37,22 +37,34 @@
   <meta name="description" content="Установка приложений, навигации и музыки на штатный экран Geely EX2 в Минске. Кастомизация интерфейса, Wi-Fi, виджеты, обучение. Установка ПО — 100 р., обновление и ремонт — 20 р." />
   <meta name="color-scheme" content="light dark" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Geely Help Minsk" />
   <meta property="og:title" content="Geely Help Minsk — сделайте экран Geely EX2 умнее" />
   <meta property="og:description" content="Навигация, музыка, Wi-Fi и приложения на штатном экране Geely EX2. Установка — 100 р. Обновление ПО — 20 р. Минск." />
   <link rel="canonical" href="https://geelyhelp.by/" />
   <meta property="og:url" content="https://geelyhelp.by/" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:image" content="https://geelyhelp.by/img/gu-after.png" />
+  <!-- Обложка для соцсетей и мессенджеров: img/og-cover.jpg, формат 1200x630.
+       Как пересоздать — см. README.md, раздел «SEO». -->
+  <meta property="og:image" content="https://geelyhelp.by/img/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Экран Geely EX2 после модификации: навигация, музыка и виджеты" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Geely Help Minsk — сделайте экран Geely EX2 умнее" />
+  <meta name="twitter:description" content="Навигация, музыка, Wi-Fi и приложения на штатном экране Geely EX2. Установка — 100 р. Обновление ПО — 20 р. Минск." />
+  <meta name="twitter:image" content="https://geelyhelp.by/img/og-cover.jpg" />
   <link rel="icon" href="img/icon.png"/>
+  <link rel="apple-touch-icon" href="img/icon.png" />
   <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.classList.add('js');</script>
-  <!-- Данные для поисковиков: бизнес (LocalBusiness) и блок FAQ (FAQPage).
-       При смене цен, ссылок или текстов вопросов — правьте и здесь. -->
+  <!-- Данные для поисковиков: бизнес (AutoRepair — подтип LocalBusiness)
+       и блок FAQ (FAQPage). При смене цен, ссылок или текстов вопросов —
+       правьте и здесь. Важно: тексты вопросов и ответов в FAQPage должны
+       ДОСЛОВНО совпадать с видимыми текстами в СЕКЦИИ 10. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "AutoRepair",
     "@id": "https://geelyhelp.by/#business",
     "name": "Geely Help Minsk",
     "url": "https://geelyhelp.by/",
@@ -120,7 +132,7 @@
       {
         "@type": "Question",
         "name": "Сколько времени всё занимает?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Сама установка и настройка — обычно 1–2 часа. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Сама установка и настройка — обычно 30-60 минут. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время." }
       },
       {
         "@type": "Question",
@@ -135,7 +147,7 @@
       {
         "@type": "Question",
         "name": "А если что-то сломается потом?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Есть услуга обновления ПО и ремонта программной части — 20 р. Пишите в любое время, помогу разобраться." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Есть услуга обновления ПО и ремонта программной части — 20 р. Пишите в любое время, помогу разобраться. По сути это и есть ремонт головного устройства Geely на уровне софта." }
       },
       {
         "@type": "Question",
@@ -156,6 +168,16 @@
         "@type": "Question",
         "name": "Чем отличаются прошивки 1111 и 1114 для Geely EX2?",
         "acceptedAnswer": { "@type": "Answer", "text": "Это последние версии ПО от дилера: 1111 — для версии Pro, 1114 — для MAX. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас." }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько стоит установка приложений на Geely EX2?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Установка и настройка пакета приложений — 100 р. Обновление ПО и ремонт программной части — 20 р. Цену фиксируем до записи — без скрытых доплат." }
+      },
+      {
+        "@type": "Question",
+        "name": "Работаете ли вы в Гродно?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да — работаю в Минске и Гродно. Позвоните или напишите в Telegram — подберём удобное время." }
       }
     ]
   }
@@ -208,7 +230,7 @@
           </a>
           <ul class="hero__facts reveal" style="--i:5">
             <li><strong>100 р.</strong><span>установка и настройка под ключ</span></li>
-            <li><strong>15-60 минут</strong><span>и всё готово</span></li>
+            <li><strong>30-60 минут</strong><span>и всё готово</span></li>
             <li><strong>1111 / 1114</strong><span>нужна свежая прошивка от дилера</span></li>
           </ul>
         </div>
@@ -439,7 +461,7 @@
           <li class="step reveal">
             <span class="step__num" aria-hidden="true">3</span>
             <h3>Приезжайте</h3>
-            <p>Установлю и настрою всё за 1–2 часа. Покажу, как пользоваться, и научу ставить программы самостоятельно.</p>
+            <p>Установлю и настрою всё за 30-60 минут. Покажу, как пользоваться, и научу ставить программы самостоятельно.</p>
           </li>
         </ol>
       </div>
@@ -570,6 +592,18 @@
             </h3>
             <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>Это последние версии ПО от дилера: 1111 — для версии Pro, 1114 — для MAX. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас.</p></div></div>
           </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q11" aria-expanded="false" aria-controls="faq-a11">Сколько стоит установка приложений на Geely EX2?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div><p>Установка и настройка пакета приложений — 100 р. Обновление ПО и ремонт программной части — 20 р. Цену фиксируем до записи — без скрытых доплат.</p></div></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3 class="faq__heading">
+              <button class="faq__q" type="button" id="faq-q12" aria-expanded="false" aria-controls="faq-a12">Работаете ли вы в Гродно?<span class="faq__icon" aria-hidden="true"></span></button>
+            </h3>
+            <div class="faq__a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div><p>Да — работаю в Минске и Гродно. Позвоните или напишите в Telegram — подберём удобное время.</p></div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -612,6 +646,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
