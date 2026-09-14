@@ -642,8 +642,9 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .cta__phone:hover { color: #2997ff; }
 .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-4); }
 
-/* На узких экранах кнопки — ровной сеткой 2×2 («Telegram» сверху во всю
-   ширину), иначе 5 кнопок переносятся рядом 3+2 и силуэт выходит некрасивым. */
+/* На узких экранах кнопки — ровной сеткой 2×2 («Telegram» сверху и «Kufar»
+   снизу во всю ширину), иначе 6 кнопок переносятся рядом 3+2+1 и силуэт
+   выходит некрасивым. */
 @media (max-width: 767px) {
   .cta__actions {
     display: grid;
@@ -652,6 +653,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
     margin-inline: auto;
   }
   .cta__actions .btn--light { grid-column: 1 / -1; } /* Telegram — во всю ширину */
+  .cta__actions .btn--kufar { grid-column: 1 / -1; } /* Kufar — во всю ширину */
 }
 
 /* ============================================================================
