@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!--
+  ============================================================================
+  GEELY HELP MINSK — страница «Скачать приложение» (app.html)
+  ============================================================================
+  Минимальная страница: шапка и футер — как на главной, а в <main> — карточка приложения
+  (иконка и название GeelyHelp Voice) и скачивание APK (voiceshort.apk). Стили специфики — styles.css,
+  РАЗДЕЛ 20. Файл APK лежит в корне сайта: чтобы обновить приложение,
+  замените voiceshort.apk — код менять не нужно.
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Скачать приложение для Geely EX2 — Geely Help Minsk</title>
+  <meta name="description" content="APK приложения голосового управления для штатного экрана Geely EX2. Скачайте бесплатно с geelyhelp.by и установите на штатную магнитолу." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://geelyhelp.by/app.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Geely Help Minsk" />
+  <meta property="og:title" content="Скачать приложение для Geely EX2" />
+  <meta property="og:description" content="Голосовое управление на штатной магнитоле Geely EX2. Скачайте APK бесплатно с geelyhelp.by." />
+  <meta property="og:url" content="https://geelyhelp.by/app.html" />
+  <meta property="og:image" content="https://geelyhelp.by/img/og-cover.jpg" />
+  <link rel="icon" href="img/icon.png"/>
+  <link rel="apple-touch-icon" href="img/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Шапка — та же, что на главной: стекло при прокрутке (script.js, БЛОК 2),
+       бургер до 1200px. Меню ведёт на разделы главной страницы. -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Geely Help Minsk — на главную страницу">
+        <span class="logo__mark" aria-hidden="true">G</span>
+        <span class="logo__text">Geely Help<em> Minsk</em></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="index.html#benefits">Возможности</a>
+        <a href="index.html#compat">Совместимость</a>
+        <a href="index.html#demo">До/после</a>
+        <a href="index.html#safety">Безопасность</a>
+        <a href="index.html#prices">Цены</a>
+        <a href="index.html#contacts">Контакты</a>
+        <a href="index.html#faq">Вопросы</a>
+      </nav>
+      <a class="btn btn--primary btn--header" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Записаться</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
+        <span class="burger__box" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Единственная секция страницы: скачивание приложения (styles.css, РАЗДЕЛ 20).
+         Ссылка voiceshort.apk и иконка GeelyHelpVoice-icon.png относительные —
+         оба файла лежат в корне сайта. -->
+    <section class="app-dl">
+      <div class="container">
+        <!-- Иконка и название приложения: сразу видно, что скачивают именно
+             приложение GeelyHelp Voice (стили — styles.css, РАЗДЕЛ 20). -->
+        <div class="app-dl__app">
+          <img class="app-dl__icon" src="GeelyHelpVoice-icon.png" alt="Иконка приложения GeelyHelp Voice" width="512" height="512">
+          <p class="app-dl__name">GeelyHelp Voice</p>
+        </div>
+        <h1>Голосовое управление для Geely EX2</h1>
+        <p class="app-dl__lead">Скачайте APK и установите приложение на штатную магнитолу — файл с официального сайта.</p>
+        <div class="app-dl__actions">
+          <a class="btn btn--primary btn--xl" href="voiceshort.apk" download>Скачать APK<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        </div>
+        <p class="app-dl__meta">voiceshort.apk · Android · Geely EX2 (любая версия прошивки)</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo" href="index.html" aria-label="Geely Help Minsk — на главную страницу">
+            <span class="logo__mark" aria-hidden="true">G</span>
+            <span class="logo__text">Geely Help<em> Minsk</em></span>
+          </a>
+          <p>Модификация ГУ и установка ПО для Geely EX2. Минск.</p>
+        </div>
+        <nav class="footer__col" aria-label="Разделы">
+          <h3>Разделы</h3>
+          <a href="index.html">Главная</a>
+          <a href="index.html#benefits">Возможности</a>
+          <a href="index.html#compat">Совместимость</a>
+          <a href="index.html#prices">Цены</a>
+          <a href="index.html#faq">Вопросы</a>
+          <a href="app.html" aria-current="page">Приложение</a>
+        </nav>
+        <nav class="footer__col" aria-label="Контакты">
+          <h3>Контакты</h3>
+          <a href="tel:+375259964898">+375 25 996 48 98</a>
+          <a href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Telegram — geelyhelpoff</a>
+          <a href="https://www.instagram.com/geely.help" target="_blank" rel="noopener">Instagram — geely.help</a>
+          <a href="https://www.threads.net/@geely.help" target="_blank" rel="noopener">Threads — geely.help</a>
+          <a href="https://youtu.be/U9wTJuGtl20" target="_blank" rel="noopener">YouTube — Geely Help Minsk</a>
+          <a href="https://www.tiktok.com/@geely.help" target="_blank" rel="noopener">TikTok — geely.help</a>
+          <a href="https://www.kufar.by/item/1082857115" target="_blank" rel="noopener">Kufar — объявление об услуге</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Geely Help Minsk · Минск</p>
+        <p>#geelyex2 #androidauto #carplay #минск #тюнинг</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -23,6 +23,7 @@
      РАЗДЕЛ 17  Адаптив: сетки и крупный шрифт на телефонах
      РАЗДЕЛ 18  Анимация появления блоков при прокрутке (.reveal)
      РАЗДЕЛ 19  prefers-reduced-motion — НЕ УДАЛЯТЬ
+     РАЗДЕЛ 20  Страница приложения (app.html) — пункт меню, кнопка скачивания
 
    ГЛАВНОЕ:
    • Цвета, шрифты и отступы меняются только в РАЗДЕЛЕ 1 — остальное их читает.
@@ -225,7 +226,7 @@ body.nav-open .header {
 
 .nav { display: flex; gap: var(--space-1); margin-left: auto; }
 .nav a {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; /* 12px по бокам: с пунктом «Приложение» меню влезает в строку от 1200px */
   white-space: nowrap; /* пункты меню никогда не переносятся на 2 строки */
   border-radius: 980px; font-size: 1rem; color: var(--color-text-secondary);
   text-decoration: none;
@@ -247,7 +248,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 
 @media (max-width: 1199px) {
   /* Бургер включается уже на планшетах: с 8 пунктами меню
-     (после добавления «Контактов») оно не влезает в строку до ~1200px. */
+     (после добавления «Приложения») оно не влезает в строку до ~1200px. */
   .btn--header { margin-left: auto; }
   .burger { display: inline-flex; }
   .nav {
@@ -399,7 +400,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 }
 
 /* ============================================================================
-   РАЗДЕЛ 10. СОВМЕСТИМОСТЬ (проверка прошивки 1111/1114)
+   РАЗДЕЛ 10. СОВМЕСТИМОСТЬ (подходит любая версия прошивки)
    ========================================================================== */
 .compat__layout {
   display: grid; grid-template-columns: 1.05fr 0.95fr;
@@ -776,4 +777,79 @@ html.js .reveal.is-shown { transition: none; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ============================================================================
+   РАЗДЕЛ 20. СТРАНИЦА ПРИЛОЖЕНИЯ (app.html)
+   Специфика страницы «Скачать приложение»: выделенный пункт меню «Приложение»
+   на главной, большая кнопка скачивания и центральный блок .app-dl.
+   Шапка и футер самой страницы — общие компоненты (РАЗДЕЛЫ 4 и 16).
+   ========================================================================== */
+/* Пункт меню «Приложение» — та же пилюля, но с обводкой и цветом акцента:
+   читается как кнопка и ведёт на app.html (index.html, СЕКЦИЯ 1). */
+.nav a.nav__app {
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+.nav a.nav__app:hover {
+  color: var(--color-accent);
+  background: rgba(0, 113, 227, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  .nav a.nav__app:hover { background: rgba(41, 151, 255, 0.14); }
+}
+
+/* Большая кнопка скачивания. */
+.btn--xl { min-height: 52px; padding: 14px 28px; font-size: 1.125rem; }
+
+/* Единственная секция страницы: центрирована на весь первый экран. */
+.app-dl {
+  display: grid; place-items: center;
+  min-height: calc(100vh - var(--header-h));
+  padding-block: var(--space-8);
+  text-align: center;
+}
+/* Блок «иконка + название» — как карточка в App Store: сразу понятно,
+   что скачивают приложение GeelyHelp Voice. */
+.app-dl__app {
+  display: grid;
+  justify-items: center;
+  row-gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+/* Тень через drop-shadow: повторяет скруглённые углы PNG-иконки —
+   обычный box-shadow остался бы прямоугольником за прозрачными углами. */
+.app-dl__icon {
+  width: clamp(76px, 10vw, 112px);
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1))
+          drop-shadow(0 20px 44px rgba(0, 0, 0, 0.18));
+}
+.app-dl__name {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.app-dl h1 {
+  font-size: var(--fs-hero);
+  line-height: 1.06; letter-spacing: -0.03em; font-weight: 700;
+  text-wrap: balance;
+}
+.app-dl__lead {
+  margin-top: var(--space-4);
+  max-width: 30em;
+  font-size: var(--fs-body-lg); line-height: 1.5;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+.app-dl__actions { margin-top: var(--space-6); }
+.app-dl__meta {
+  margin-top: var(--space-4);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 639px) {
+  /* Кнопка скачивания — во всю ширину (до 320px), как главный CTA. */
+  .app-dl__actions .btn--xl { width: 100%; max-width: 320px; }
 }

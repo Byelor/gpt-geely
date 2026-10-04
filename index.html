@@ -6,16 +6,17 @@
   ============================================================================
 
   ФАЙЛЫ ПРОЕКТА
-    index.html  — разметка (этот файл); секции помечены «СЕКЦИЯ N»
+    index.html  — разметка главной (этот файл); секции помечены «СЕКЦИЯ N»
+    app.html    — страница «Скачать приложение»: APK voiceshort.apk, инструкция, FAQ
     styles.css  — стили; в начале — оглавление, настройки — в «РАЗДЕЛ 1»
     script.js   — скрипты; в начале — CONFIG и блоки «БЛОК N»
     README.md   — шпаргалка: как менять цены, ссылки, тексты
 
   СОСТАВ СТРАНИЦЫ
-    СЕКЦИЯ 1   Шапка (меню + кнопка «Записаться»)
+    СЕКЦИЯ 1   Шапка (меню + кнопки «Приложение» и «Записаться»)
     СЕКЦИЯ 2   Hero — первый экран
     СЕКЦИЯ 3   Возможности (9 карточек + чипы приложений)
-    СЕКЦИЯ 4   Совместимость (требование к прошивке 1111/1114)
+    СЕКЦИЯ 4   Совместимость (подходит любая версия прошивки)
     СЕКЦИЯ 5   До / После (слайдер)
     СЕКЦИЯ 6   Безопасность (3 карточки)
     СЕКЦИЯ 7   Как это работает (3 шага)
@@ -127,12 +128,12 @@
       {
         "@type": "Question",
         "name": "Моя версия прошивки подойдёт?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Нужны последние версии от дилера — 1111 и 1114. Не знаете, какая у вас? Напишите в Telegram — проверим вместе. Если версия старее, сначала обновитесь у дилера (от 30 минут до 2 часов)." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Да — подойдёт любая версия прошивки. Модифицирую и ставлю ПО независимо от того, какая версия стоит у вас. Не знаете свою версию? Напишите в Telegram — подскажу, как посмотреть." }
       },
       {
         "@type": "Question",
         "name": "Сколько времени всё занимает?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Сама установка и настройка — обычно 30-60 минут. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Сама установка и настройка — обычно 30-60 минут. Записывайтесь заранее — подберём время." }
       },
       {
         "@type": "Question",
@@ -166,8 +167,8 @@
       },
       {
         "@type": "Question",
-        "name": "Чем отличаются прошивки 1111 и 1114 для Geely EX2?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Это последние версии ПО от дилера: 1111 или 1114. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас." }
+        "name": "Нужно ли обновлять прошивку у дилера перед установкой?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Нет — подойдёт любая версия прошивки. Обновляться у дилера перед записью не нужно." }
       },
       {
         "@type": "Question",
@@ -201,8 +202,12 @@
         <a href="#demo">До/после</a>
         <a href="#safety">Безопасность</a>
         <a href="#prices">Цены</a>
-        <a href="#contacts">Контакты</a>
         <a href="#faq">Вопросы</a>
+        <!-- «Приложение» — выделенный пункт-кнопка (styles.css, РАЗДЕЛ 20):
+             ведёт на страницу скачивания app.html. Пункт «Контакты» убран
+             из шапки, чтобы меню влезало в строку на десктопе: контакт и так
+             всегда под рукой — кнопка «Записаться» рядом и футер. -->
+        <a class="nav__app" href="app.html">Приложение</a>
       </nav>
       <a class="btn btn--primary btn--header" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Записаться</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
@@ -231,7 +236,7 @@
           <ul class="hero__facts reveal" style="--i:5">
             <li><strong>100 р.</strong><span>установка и настройка под ключ</span></li>
             <li><strong>30-60 минут</strong><span>и всё готово</span></li>
-            <li><strong>1111 / 1114</strong><span>нужна свежая прошивка от дилера</span></li>
+            <li><strong>Любая версия прошивки</strong><span>обновляться у дилера не нужно</span></li>
           </ul>
         </div>
         <div class="hero__visual reveal" style="--i:5">
@@ -329,14 +334,14 @@
       </div>
     </section>
   <!-- ============================================================
-       СЕКЦИЯ 4. СОВМЕСТИМОСТЬ — требование прошивки 1111/1114.
+       СЕКЦИЯ 4. СОВМЕСТИМОСТЬ — подходит любая версия прошивки.
        ============================================================ -->
     <section class="section section--secondary" id="compat">
       <div class="container compat__layout">
         <div class="reveal">
           <p class="eyebrow">Совместимость</p>
           <h2 class="section__title">Подойдёт ли моей машине?</h2>
-          <p class="section__lead">Работаю с Geely EX2. Единственное требование — актуальная прошивка от дилера.</p>
+          <p class="section__lead">Работаю с Geely EX2 — подойдёт любая версия прошивки.</p>
           <ul class="compat__checks">
             <li>
               <span class="check__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -344,11 +349,11 @@
             </li>
             <li>
               <span class="check__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <div><strong>Прошивка</strong><span>Последние версии от дилера — 1111 и 1114</span></div>
+              <div><strong>Прошивка</strong><span>Подойдёт любая версия — обновляться у дилера не нужно</span></div>
             </li>
             <li>
               <span class="check__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <div><strong>Не знаете свою версию?</strong><span>Напишите в Telegram — проверим вместе.</span></div>
+              <div><strong>Не знаете свою версию?</strong><span>Напишите в Telegram — подскажу, как посмотреть.</span></div>
             </li>
           </ul>
         </div>
@@ -358,8 +363,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
               <h3>Важно</h3>
             </div>
-            <p>Для модификации нужны последние версии ПО от дилера — <strong>1111 и 1114</strong>. Если версия старее, сначала съездите к дилеру на обновление: это займёт от получаса до двух часов. Со старой прошивкой модифицировать ГУ я не стану — так надёжнее для вашей машины.</p>
-            <p>Не знаете, какая версия стоит у вас? Напишите мне — проверим вместе до записи.</p>
+            <p>Работаю с <strong>любой версией прошивки</strong>. Модифицирую и ставлю ПО независимо от того, какая версия стоит у вас, обновляться у дилера перед записью не нужно.</p>
+            <p>Не знаете, какая версия стоит у вас? Напишите мне — подскажу, как посмотреть.</p>
           </div>
         </div>
       </div>
@@ -455,13 +460,13 @@
           </li>
           <li class="step reveal">
             <span class="step__num" aria-hidden="true">2</span>
-            <h3>Проверьте прошивку</h3>
-            <p>Нужны версии 1111 или 1114 от дилера. Если старее — обновитесь у дилера (от 30 минут до 2 часов).</p>
+            <h3>Приезжайте</h3>
+            <p>Установлю и настрою всё за 30-60 минут — на любой версии прошивки.</p>
           </li>
           <li class="step reveal">
             <span class="step__num" aria-hidden="true">3</span>
-            <h3>Приезжайте</h3>
-            <p>Установлю и настрою всё за 30-60 минут. Покажу, как пользоваться, и научу ставить программы самостоятельно.</p>
+            <h3>Пользуйтесь</h3>
+            <p>Покажу, как пользоваться всеми приложениями, и научу ставить программы самостоятельно.</p>
           </li>
         </ol>
       </div>
@@ -543,13 +548,13 @@
             <h3 class="faq__heading">
               <button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">Моя версия прошивки подойдёт?<span class="faq__icon" aria-hidden="true"></span></button>
             </h3>
-            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Нужны последние версии от дилера — 1111 и 1114. Не знаете, какая у вас? Напишите в Telegram — проверим вместе. Если версия старее, сначала обновитесь у дилера (от 30 минут до 2 часов).</p></div></div>
+            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Да — подойдёт любая версия прошивки. Модифицирую и ставлю ПО независимо от того, какая версия стоит у вас. Не знаете свою версию? Напишите в Telegram — подскажу, как посмотреть.</p></div></div>
           </div>
           <div class="faq__item reveal">
             <h3 class="faq__heading">
               <button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">Сколько времени всё занимает?<span class="faq__icon" aria-hidden="true"></span></button>
             </h3>
-            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Сама установка и настройка — обычно 30-60 минут. Обновление прошивки у дилера — от получаса до двух часов. Записывайтесь заранее — подберём время.</p></div></div>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Сама установка и настройка — обычно 30-60 минут. Записывайтесь заранее — подберём время.</p></div></div>
           </div>
           <div class="faq__item reveal">
             <h3 class="faq__heading">
@@ -589,9 +594,9 @@
           </div>
           <div class="faq__item reveal">
             <h3 class="faq__heading">
-              <button class="faq__q" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">Чем отличаются прошивки 1111 и 1114 для Geely EX2?<span class="faq__icon" aria-hidden="true"></span></button>
+              <button class="faq__q" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">Нужно ли обновлять прошивку у дилера перед установкой?<span class="faq__icon" aria-hidden="true"></span></button>
             </h3>
-            <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>Это последние версии ПО от дилера: 1111 или 1114. Модификация ГУ возможна только на них, поэтому перед записью вместе проверим, какая версия стоит у вас.</p></div></div>
+            <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>Нет — подойдёт любая версия прошивки. Обновляться у дилера перед записью не нужно.</p></div></div>
           </div>
           <div class="faq__item reveal">
             <h3 class="faq__heading">
@@ -629,6 +634,7 @@
             <a href="#compat">Совместимость</a>
             <a href="#prices">Цены</a>
             <a href="#faq">Вопросы</a>
+            <a href="app.html">Приложение</a>
           </nav>
           <nav class="footer__col" aria-label="Контакты">
             <h3>Контакты</h3>
