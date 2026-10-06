@@ -210,6 +210,13 @@
         <a class="nav__app" href="app.html">Приложение</a>
       </nav>
       <a class="btn btn--primary btn--header" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Записаться</a>
+      <!-- Иконка приложения на узких экранах (<1200px): там пункт «Приложение» скрыт
+           в бургер-меню, поэтому дублируем его иконкой скачивания прямо в шапке —
+           зашедший с телефона сразу видит, что приложение есть (styles.css, РАЗДЕЛ 20).
+           На app.html кнопка не добавлена: она вела бы на уже открытую страницу. -->
+      <a class="btn btn--app" href="app.html" aria-label="Скачать приложение" title="Скачать приложение">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      </a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
         <span class="burger__box" aria-hidden="true"><i></i><i></i></span>
       </button>
