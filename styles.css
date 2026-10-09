@@ -23,7 +23,7 @@
      РАЗДЕЛ 17  Адаптив: сетки и крупный шрифт на телефонах
      РАЗДЕЛ 18  Анимация появления блоков при прокрутке (.reveal)
      РАЗДЕЛ 19  prefers-reduced-motion — НЕ УДАЛЯТЬ
-     РАЗДЕЛ 20  Страница приложения (app.html) — пункт меню, иконка в шапке, кнопка скачивания
+     РАЗДЕЛ 20  Страница приложения (app.html) — пункт меню, иконка в шапке, кнопки скачивания и видеообзора
 
    ГЛАВНОЕ:
    • Цвета, шрифты и отступы меняются только в РАЗДЕЛЕ 1 — остальное их читает.
@@ -874,6 +874,12 @@ html.js .reveal.is-shown { transition: none; }
   text-wrap: pretty;
 }
 .app-dl__actions { margin-top: var(--space-6); }
+/* Кнопки: «Скачать APK» (primary) + «Видеообзор на YouTube» (ghost) — тот же паттерн «primary + ghost», что в hero главной (index.html, СЕКЦИЯ 2). Стопкой и на телефонах (flex-wrap), и на широких экранах (flex-direction — @media-правило ниже). */
+.app-dl__btns {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: var(--space-3);
+}
 .app-dl__meta {
   margin-top: var(--space-4);
   font-size: var(--fs-caption);
@@ -881,6 +887,13 @@ html.js .reveal.is-shown { transition: none; }
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 639px) {
-  /* Кнопка скачивания — во всю ширину (до 320px), как главный CTA. */
+  /* Обе кнопки — во всю ширину (до 320px), стопкой: скачивание — главный CTA, видеообзор — вторичный (ghost). */
   .app-dl__actions .btn--xl { width: 100%; max-width: 320px; }
+}
+
+@media (min-width: 640px) {
+  /* На широких экранах — как на телефонах: кнопки стопкой, «Видеообзор» под «Скачать APK».
+     Обе пилюли одной ширины (min-width 320px); иерархию главного CTA несёт синий цвет primary. */
+  .app-dl__btns { flex-direction: column; }
+  .app-dl__actions .btn--xl { min-width: 320px; }
 }
