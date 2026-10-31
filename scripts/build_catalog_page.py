@@ -193,7 +193,7 @@ def main() -> None:
             <h3>Только для личной установки</h3>
           </div>
           <p>Приложения из каталога предназначены для личной установки. Продавать их и брать плату за установку запрещено всем, кроме официального автора — <strong>geelyhelp</strong>. Если вам их продали или взяли плату за установку во время оказания услуги — сообщите об этом. За помощью в установке обращайтесь: <a class="inline-link" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Telegram — @geelyhelpoff</a>, <a class="inline-link" href="https://t.me/geely_mod" target="_blank" rel="noopener">@geely_mod</a> или по телефону <a class="inline-link" href="tel:+375259964898">+375 25 996 48 98</a>.</p>
-          <p><a class="btn btn--primary" href="../index.html#contacts">Перейти к контактам</a></p>
+          <p class="warn__cta"><a class="btn btn--primary" href="../index.html#contacts">Перейти к контактам</a></p>
           <p>Условия использования — в <a class="inline-link" href="../terms.html">Пользовательском соглашении</a> и <a class="inline-link" href="../privacy.html">Политике в отношении данных</a>.</p>
         </div>
       </div>

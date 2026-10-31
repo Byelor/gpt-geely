@@ -452,6 +452,8 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
 .warn__head h3 { font-size: 1.1875rem; }
 .warn p { color: var(--color-text-secondary); font-size: 1rem; line-height: 1.6; }
 .warn p + p { margin-top: var(--space-3); }
+/* Кнопка внутри предупреждения («Перейти к контактам») — по центру карточки. */
+.warn__cta { text-align: center; }
 .warn strong { color: var(--color-text-primary); }
 /* ============================================================================
    РАЗДЕЛ 11. СЛАЙДЕР «ДО / ПОСЛЕ»
