@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!--
+  ============================================================================
+  GEELY HELP MINSK — страница «Политика в отношении данных» (privacy.html)
+  ============================================================================
+  Правовой документ приложения GeelyHelp Voice (GH Voice): какие данные
+  обрабатывает Приложение, где хранятся и куда передаются. Текст документа
+  ведёт Автор; при обновлении редакции правится и «Актуальная редакция»
+  в .legal__meta. Пара страницы — terms.html (пользовательское соглашение),
+  ссылки на обе — в футере всех страниц (styles.css, РАЗДЕЛ 22).
+-->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Политика в отношении данных GH Voice — Geely Help Minsk</title>
+  <meta name="description" content="Политика в отношении данных приложения голосового управления GH Voice: какие данные обрабатываются, где хранятся и что передаётся в интернет. Актуальная редакция — 31 октября 2026 г." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://geelyhelp.by/privacy.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Geely Help Minsk" />
+  <meta property="og:title" content="Политика в отношении данных GH Voice" />
+  <meta property="og:description" content="Какие данные обрабатывает приложение GH Voice, где они хранятся и передаются ли куда-либо." />
+  <meta property="og:url" content="https://geelyhelp.by/privacy.html" />
+  <meta property="og:image" content="https://geelyhelp.by/img/og-cover.jpg" />
+  <link rel="icon" href="img/icon.png"/>
+  <link rel="apple-touch-icon" href="img/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Шапка — та же, что на app.html. -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Geely Help Minsk — на главную страницу">
+        <span class="logo__mark" aria-hidden="true">G</span>
+        <span class="logo__text">Geely Help<em> Minsk</em></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="index.html#benefits">Возможности</a>
+        <a href="index.html#compat">Совместимость</a>
+        <a href="index.html#demo">До/после</a>
+        <a href="index.html#safety">Безопасность</a>
+        <a href="index.html#prices">Цены</a>
+        <a href="index.html#contacts">Контакты</a>
+        <a href="index.html#faq">Вопросы</a>
+      </nav>
+      <a class="btn btn--primary btn--header" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Записаться</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
+        <span class="burger__box" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="legal">
+      <div class="container legal__wrap">
+        <h1>Политика в отношении данных GH Voice</h1>
+        <p class="legal__meta">Автор: Byelor (geelyhelp) · Актуальная редакция: 31 октября 2026 г.</p>
+
+        <p>Эта политика описывает, какие данные обрабатывает приложение GH Voice (далее — «Приложение»), где они хранятся и передаются ли куда-либо. Коротко: <strong>Приложение не собирает персональные данные и не имеет собственных серверов</strong> — вся основная работа выполняется на устройстве.</p>
+
+        <h2>1. Голос и распознавание речи</h2>
+        <p>Распознавание команд выполняется полностью на устройстве: модель распознавания (Vosk) входит в состав установочного файла. <strong>Аудиозаписи никуда не отправляются и не сохраняются</strong> — микрофон используется только в момент прослушивания команды. Синтез голосовых ответов также выполняется локально, на устройстве.</p>
+
+        <h2>2. Данные, хранящиеся на устройстве</h2>
+        <p>Приложение хранит настройки и служебные данные только локально, в памяти головного устройства:</p>
+        <ul>
+          <li>тумблеры голосовых ответов и подтверждений;</li>
+          <li>привязки приложений к голосовым командам;</li>
+          <li>выбранный город и кэш последнего прогноза погоды;</li>
+          <li>привязки слотов звонков к контактам;</li>
+          <li>настройки оформления.</li>
+        </ul>
+        <p>Эти данные не покидают устройство, не резервируются в облако и удаляются вместе с Приложением. Приложение не запрашивает доступ к вашей учётной записи Google и не входит ни в какие аккаунты.</p>
+
+        <h2>3. Обращения в интернет</h2>
+        <p>Приложение обращается в сеть только в трёх случаях:</p>
+        <ol>
+          <li><strong>Погода.</strong> Прогноз запрашивается у сервиса Open-Meteo (open-meteo.com). На сервер передаются только географические координаты выбранного вами города — без имени, номера устройства и иных идентификаторов. Без интернета Приложение отвечает по последнему сохранённому прогнозу.</li>
+          <li><strong>Поиск города.</strong> Название города при его выборе передаётся сервису геокодирования Open-Meteo.</li>
+          <li><strong>Обновления.</strong> Приложение проверяет наличие новой версии на файловом хранилище разработчика (files.geelyhelp.by, Cloudflare R2). Передаются только сведения о текущей версии. Скачанный файл проверяется (контрольная сумма SHA-256 и подпись) до предложения установки; установка выполняется через системное окно Android и требует вашего подтверждения.</li>
+        </ol>
+        <p>Никакие голосовые записи, контакты, звонки и настройки в интернет не передаются.</p>
+
+        <h2>4. Разрешения Android</h2>
+        <ul>
+          <li><strong>Микрофон</strong> — для распознавания команд. Обработка локальная, аудио никуда не отправляется. Разрешение можно отозвать в настройках Android в любой момент.</li>
+          <li><strong>Поверх других окон</strong> — плашка «Слушаю» и запросы подтверждения поверх приложений автомобиля.</li>
+          <li><strong>Контакты и телефон</strong> — используется телефонная книга, приходящая с телефона по Bluetooth, и совершение звонков по команде. Контакты остаются на устройстве.</li>
+          <li><strong>Установка обновлений</strong> — открытие системного установщика для обновления Приложения.</li>
+        </ul>
+        <p>Полный список разрешений виден в настройках Android. Работа с root-правами ограничивается настройкой разрешений и автозапуска на самом головном устройстве и не затрагивает прошивку и заводские настройки автомобиля.</p>
+
+        <h2>5. Журнал диагностики</h2>
+        <p>Приложение ведёт локальный технический журнал работы (для поиска неисправностей). Он хранится на устройстве и отправляется куда-либо только если вы сами воспользуетесь функцией «поделиться» — например, чтобы отправить журнал Автору для диагностики. Перед отправкой вы можете ознакомиться с его содержимым.</p>
+
+        <h2>6. Чего в Приложении нет</h2>
+        <ul>
+          <li>никакой аналитики и статистики использования;</li>
+          <li>никакой рекламы;</li>
+          <li>никаких трекеров и счётчиков;</li>
+          <li>никаких аккаунтов, регистрации и входа.</li>
+        </ul>
+
+        <h2>7. Сайт geelyhelp.by</h2>
+        <p>Скачивание файлов с сайта — обычные обращения за файлами по прямой ссылке. Стороннее поведение самого сайта (журналы веб-сервера, cookie, статистика посещений) определяется инфраструктурой сайта и в эту политику о Приложении не входит.</p>
+
+        <h2>8. Изменения политики</h2>
+        <p>Автор может обновить эту политику. Актуальная редакция доступна на сайте и в Приложении на странице «О системе».</p>
+
+        <h2>9. Контакты</h2>
+        <p>Вопросы по обработке данных:</p>
+        <ul>
+          <li>Telegram: <a class="inline-link" href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">@geelyhelpoff</a></li>
+          <li>Telegram: <a class="inline-link" href="https://t.me/geely_mod" target="_blank" rel="noopener">@geely_mod</a></li>
+        </ul>
+
+        <div class="legal__see-also">
+          <p>Условия использования приложения — в документе <a class="inline-link" href="terms.html">«Пользовательское соглашение GH Voice»</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo" href="index.html" aria-label="Geely Help Minsk — на главную страницу">
+            <span class="logo__mark" aria-hidden="true">G</span>
+            <span class="logo__text">Geely Help<em> Minsk</em></span>
+          </a>
+          <p>Модификация ГУ и установка ПО для Geely EX2. Минск.</p>
+        </div>
+        <nav class="footer__col" aria-label="Разделы">
+          <h3>Разделы</h3>
+          <a href="index.html">Главная</a>
+          <a href="index.html#benefits">Возможности</a>
+          <a href="index.html#compat">Совместимость</a>
+          <a href="index.html#prices">Цены</a>
+          <a href="index.html#faq">Вопросы</a>
+          <a href="app.html">Приложение</a>
+        </nav>
+        <nav class="footer__col" aria-label="Контакты">
+          <h3>Контакты</h3>
+          <a href="tel:+375259964898">+375 25 996 48 98</a>
+          <a href="https://t.me/geelyhelpoff" target="_blank" rel="noopener">Telegram — geelyhelpoff</a>
+          <a href="https://www.instagram.com/geely.help" target="_blank" rel="noopener">Instagram — geely.help</a>
+          <a href="https://www.threads.net/@geely.help" target="_blank" rel="noopener">Threads — geely.help</a>
+          <a href="https://youtu.be/U9wTJuGtl20" target="_blank" rel="noopener">YouTube — Geely Help Minsk</a>
+          <a href="https://www.tiktok.com/@geely.help" target="_blank" rel="noopener">TikTok — geely.help</a>
+          <a href="https://www.kufar.by/item/1082857115" target="_blank" rel="noopener">Kufar — объявление об услуге</a>
+        </nav>
+      </div>
+      <nav class="footer__legal" aria-label="Правовые документы">
+        <a href="privacy.html" aria-current="page">Политика в отношении данных</a>
+        <a href="terms.html">Пользовательское соглашение</a>
+      </nav>
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Geely Help Minsk · Минск</p>
+        <p>#geelyex2 #androidauto #carplay #минск #тюнинг</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

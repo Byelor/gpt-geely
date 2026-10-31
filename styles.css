@@ -24,6 +24,7 @@
      РАЗДЕЛ 18  Анимация появления блоков при прокрутке (.reveal)
      РАЗДЕЛ 19  prefers-reduced-motion — НЕ УДАЛЯТЬ
      РАЗДЕЛ 20  Страница приложения (app.html) — пункт меню, иконка в шапке, кнопки скачивания и видеообзора
+    РАЗДЕЛ 21  Каталог приложений (s/katalog-*.html) — сетка карточек по категориям
 
    ГЛАВНОЕ:
    • Цвета, шрифты и отступы меняются только в РАЗДЕЛЕ 1 — остальное их читает.
@@ -896,4 +897,250 @@ html.js .reveal.is-shown { transition: none; }
      Обе пилюли одной ширины (min-width 320px); иерархию главного CTA несёт синий цвет primary. */
   .app-dl__btns { flex-direction: column; }
   .app-dl__actions .btn--xl { min-width: 320px; }
+}
+
+/* ============================================================================
+   РАЗДЕЛ 21. КАТАЛОГ ПРИЛОЖЕНИЙ (s/katalog-*.html)
+   Служебная страница для клиентов: сетка карточек по категориям.
+   Разметку собирает scripts/build_catalog_page.py — классы здесь должны
+   совпадать с ним.
+   ========================================================================== */
+.apps-head { padding-block: var(--space-7) var(--space-5); text-align: center; }
+.apps-head h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.08; letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.apps-head__lead {
+  max-width: 34em; margin: var(--space-3) auto 0;
+  font-size: var(--fs-body); line-height: 1.5;
+  color: var(--color-text-secondary); text-wrap: pretty;
+}
+
+.apps-sec { padding-block: var(--space-4); }
+.apps-sec__h {
+  display: flex; align-items: baseline; gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-h2); letter-spacing: -0.01em;
+}
+/* Счётчик рядом с категорией — та же пилюля, что чипы на главной. */
+.apps-sec__n {
+  padding: 2px 10px; border-radius: 980px;
+  background: var(--color-bg-secondary);
+  box-shadow: inset 0 0 0 1px var(--color-divider);
+  font-size: var(--fs-caption); font-weight: 500;
+  color: var(--color-text-tertiary);
+}
+
+.apps-grid {
+  display: grid;
+  /* min(100%, 280px): на экране 320px колонка не вылезает за контейнер */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-4);
+}
+/* Одна карточка (скрипт для Windows) — не тянется на всю ширину. */
+.apps-grid--single { grid-template-columns: minmax(min(100%, 420px), 420px); }
+.apps-card {
+  position: relative; /* для чекбокса выбора в углу карточки */
+  cursor: pointer; /* клик по карточке = выбор для массовой загрузки */
+  display: flex; flex-direction: column;
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card), inset 0 0 0 1px var(--color-divider);
+  transition: transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
+}
+.apps-card--plain { cursor: default; }
+/* Квадрат иконки: буква из data-l — заглушка, пока PNG не пришёл
+   (у части старых APK иконки в бакете нет; img снимает себя через onerror). */
+.apps-card__ic {
+  position: relative;
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  margin-bottom: var(--space-3);
+  border-radius: 12px;
+  background: var(--color-bg-secondary);
+  box-shadow: inset 0 0 0 1px var(--color-divider);
+  overflow: hidden;
+  font-size: 1.25rem; font-weight: 600;
+  color: var(--color-text-tertiary);
+}
+.apps-card__ic::before { content: attr(data-l); }
+.apps-card__ic img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.apps-card__name { font-size: 1.0625rem; letter-spacing: -0.01em; }
+.apps-card__meta {
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.apps-card__desc {
+  flex: 1;
+  margin-top: var(--space-2);
+  font-size: 0.95rem; line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+.apps-card__btn { width: 100%; margin-top: var(--space-3); justify-content: center; }
+/* Выбор для массовой загрузки; :has подсвечивает карточку в современных браузерах. */
+.apps-card__pick {
+  position: absolute; top: var(--space-3); right: var(--space-3);
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.apps-card__pick input {
+  width: 22px; height: 22px; margin: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+.apps-card:has(.apps-card__pick input:checked) {
+  box-shadow: var(--shadow-card), inset 0 0 0 2px var(--color-accent);
+}
+/* Плавающая панель с выбранным; hidden — пока ничего не отмечено. */
+.dlbar {
+  position: fixed; left: 50%; bottom: var(--space-4);
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border-radius: 980px;
+  background: var(--color-glass);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card-hover), inset 0 0 0 1px var(--color-divider);
+  z-index: 20;
+}
+.dlbar[hidden] { display: none; }
+.dlbar .btn { min-height: 40px; padding: 10px 16px; }
+.dlbar .btn:disabled { opacity: 0.4; cursor: default; }
+.dlbar__n { font-size: var(--fs-caption); color: var(--color-text-secondary); white-space: nowrap; }
+/* Пошаговая загрузка: одна карточка за раз, «Скачать» листает к следующей. */
+.dlmodal {
+  position: fixed; inset: 0; z-index: 30;
+  display: grid; place-items: center;
+  padding: var(--space-4);
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.dlmodal[hidden] { display: none; }
+.dlmodal__box {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; max-width: 360px;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border-radius: var(--radius-card);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card-hover), inset 0 0 0 1px var(--color-divider);
+  text-align: center;
+}
+.dlmodal__close {
+  position: absolute; top: 8px; right: 8px;
+  width: 36px; height: 36px;
+  border: 0; border-radius: 50%;
+  background: transparent; color: var(--color-text-secondary);
+  font-size: 1.4rem; line-height: 1; cursor: pointer;
+}
+.dlmodal__close:hover { background: var(--color-bg-secondary); }
+.dlmodal__step {
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-caption); color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.dlmodal .apps-card__ic { width: 72px; height: 72px; cursor: default; }
+.dlmodal__nav { display: flex; gap: var(--space-2); width: 100%; margin-top: var(--space-4); }
+.dlmodal__nav .btn { flex: 1; padding-inline: 12px; }
+.dlmodal__dl { width: 100%; margin-top: var(--space-2); }
+@media (hover: hover) {
+  .apps-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover), inset 0 0 0 1px var(--color-divider);
+  }
+}
+
+/* ============================================================================
+   РАЗДЕЛ 22. ПРАВОВЫЕ ДОКУМЕНТЫ (privacy.html, terms.html)
+   Текст документа — в узкой «читабельной» колонке, как статья: мера ~50rem,
+   по центру контейнера; на широких экранах (≥1440px) мера и кегль растут —
+   @media-правило в конце раздела. Разделы h2, обычные списки с маркерами
+   (базовый сброс их снимает — возвращаем здесь). Шапка и футер — общие
+   компоненты (РАЗДЕЛЫ 4 и 16).
+   ========================================================================== */
+.legal { padding-block: var(--space-7) var(--space-8); }
+.legal__wrap { max-width: 50rem; margin-inline: auto; }
+.legal h1 {
+  font-size: var(--fs-h2);
+  line-height: 1.12; letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+/* Строка «Автор · Актуальная редакция» под заголовком. */
+.legal__meta {
+  margin-top: var(--space-3);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+}
+.legal h2 {
+  margin-top: var(--space-7);
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.legal h3 { margin-top: var(--space-5); font-size: 1.125rem; }
+.legal p { margin-top: var(--space-3); text-wrap: pretty; }
+/* Маркированный список — разделы 2, 4, 6 документов. */
+.legal ul { margin-top: var(--space-3); display: grid; gap: var(--space-2); }
+.legal ul > li { position: relative; padding-left: 1.4em; }
+.legal ul > li::before {
+  content: "•"; position: absolute; left: 0.35em;
+  color: var(--color-text-tertiary);
+}
+/* Нумерованный список — раздел 3 политики (случая обращения в интернет). */
+.legal ol { margin-top: var(--space-3); display: grid; gap: var(--space-2); counter-reset: legal-ol; }
+.legal ol > li { position: relative; padding-left: 2em; }
+.legal ol > li::before {
+  counter-increment: legal-ol;
+  content: counter(legal-ol) ".";
+  position: absolute; left: 0;
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.legal .inline-link { text-decoration: underline; text-underline-offset: 2px; }
+/* Перекрёстная ссылка на второй документ в конце страницы. */
+.legal__see-also {
+  margin-top: var(--space-7);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-secondary);
+  font-size: var(--fs-body);
+}
+.legal__see-also p { margin-top: 0; }
+
+/* Ссылки на правовые документы в футере всех страниц: строка мелких ссылок
+   над строкой копирайта (стандартное место для legal-ссылок). */
+.footer__legal {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+}
+.footer__legal a {
+  display: flex; align-items: center; min-height: 44px;
+  color: var(--color-text-secondary); text-decoration: none;
+  font-size: var(--fs-caption);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+.footer__legal a:hover { color: var(--color-text-primary); text-decoration: underline; }
+.footer__legal + .footer__bottom { margin-top: var(--space-4); }
+
+/* Широкие экраны (≥1440px): текст занимает ровно 80% ширины экрана — для
+   этого секция выходит за стандартный контейнер (1200px), его боковые поля
+   обнуляются, а колонка тянется свободно. Кегль чуть крупнее базового. */
+@media (min-width: 1440px) {
+  .legal { padding-block: var(--space-8) var(--space-9); }
+  .legal .container { max-width: none; padding-inline: 0; }
+  .legal__wrap { max-width: none; width: 80%; }
+  .legal { font-size: 1.1875rem; }
+  .legal h1 { font-size: 2.75rem; }
+  .legal h2 { font-size: 1.5rem; margin-top: var(--space-8); }
+  .legal h3 { font-size: 1.1875rem; }
+  .legal__see-also { font-size: 1.1875rem; }
 }

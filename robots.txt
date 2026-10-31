@@ -1,7 +1,7 @@
-# geelyhelp.by — все страницы открыты для индексации.
-# Пустой Disallow означает «запрета нет», Allow:/ не нужен.
+# geelyhelp.by — публичные страницы открыты для индексации,
+# кроме /s/ — служебной страницы каталога приложений для клиентов.
 User-agent: *
-Disallow:
+Disallow: /s/
 
 # Карта сайта
 Sitemap: https://geelyhelp.by/sitemap.xml

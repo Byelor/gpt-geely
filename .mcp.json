@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "backlog-md": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-backlog-md"
+      ],
+      "env": {}
+    }
+  }
+}

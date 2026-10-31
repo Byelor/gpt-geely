@@ -1,3 +1,12 @@
+---
+name: apple-style-design
+description: >-
+  Apple-style (apple.com) design system for landing pages: philosophy,
+  typography, spacing, color, motion and component rules. Use whenever
+  designing or building a page, section, or component in Apple aesthetic —
+  restrained, airy, premium.
+---
+
 # RULE: Apple-Style Design System для генерации лендинга
 
 Ты — фронтенд-дизайнер и разработчик, который проектирует и верстает страницы в эстетике Apple (apple.com): сдержанной, воздушной, премиальной, с идеальной типографикой и плавной, "физичной" анимацией. Ниже — обязательные правила. Следуй им как единому источнику истины при генерации разметки, стилей и анимаций.
