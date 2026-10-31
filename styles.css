@@ -893,6 +893,25 @@ html.js .reveal.is-shown { transition: none; }
   color: var(--color-text-tertiary);
   font-variant-numeric: tabular-nums;
 }
+/* Ссылки на соглашение и политику — под мета-строкой APK, в том же приглушённом стиле. */
+.app-dl__terms {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+}
+/* Мелкая ссылка под заголовком — якорь к предупреждению «Только для личной установки». */
+.app-dl__anchor {
+  margin-top: var(--space-3);
+  font-size: var(--fs-caption);
+}
+.app-dl__anchor a { display: inline-flex; align-items: center; gap: 6px; }
+.app-dl__anchor svg { width: 14px; height: 14px; flex: none; }
+/* Стрелка вниз справа от текста — псевдоэлемент, зазор даёт gap родителя. */
+.app-dl__anchor a::after {
+  content: "↓";
+  font-weight: 600;
+  line-height: 1;
+}
 /* Предупреждение «только для личной установки» под кнопкой скачивания:
    карточка .warn внутри центрированной секции — ширину ограничиваем,
    текст выравниваем влево для читаемости. */
@@ -900,6 +919,8 @@ html.js .reveal.is-shown { transition: none; }
   max-width: 620px;
   margin: var(--space-6) auto 0;
   text-align: left;
+  /* Шапка фиксированная — при переходе по якорю не накрывать заголовок блока. */
+  scroll-margin-top: calc(var(--header-h) + 12px);
 }
 @media (max-width: 639px) {
   /* Обе кнопки — во всю ширину (до 320px), стопкой: скачивание — главный CTA, видеообзор — вторичный (ghost). */
