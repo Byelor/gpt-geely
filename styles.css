@@ -234,6 +234,9 @@ body.nav-open .header {
   transition: color var(--dur-fast) var(--ease-standard), background var(--dur-fast) var(--ease-standard);
 }
 .nav a:hover { color: var(--color-text-primary); background: var(--color-bg-secondary); }
+/* «Вопросы» — только в бургер-меню (<1200px): на десктопе его место в строке
+   занял «Контакты», а в мобильном меню видны обе ссылки. */
+.nav a.nav__faq { display: none; }
 
 .burger { display: none; width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; }
 .burger__box { position: relative; display: block; width: 20px; height: 12px; }
@@ -264,6 +267,7 @@ body.nav-open .burger__box i:nth-child(2) { top: 5px; transform: rotate(-45deg);
   }
   body.nav-open .nav { opacity: 1; transform: none; pointer-events: auto; }
   .nav a { min-height: 44px; font-size: 1.0625rem; color: var(--color-text-primary); }
+  .nav a.nav__faq { display: inline-flex; } /* «Вопросы» возвращается в мобильное меню */
 }
 @media (max-width: 479px) {
   .logo__text em { display: none; }
@@ -887,6 +891,14 @@ html.js .reveal.is-shown { transition: none; }
   color: var(--color-text-tertiary);
   font-variant-numeric: tabular-nums;
 }
+/* Предупреждение «только для личной установки» под кнопкой скачивания:
+   карточка .warn внутри центрированной секции — ширину ограничиваем,
+   текст выравниваем влево для читаемости. */
+.app-dl__notice {
+  max-width: 620px;
+  margin: var(--space-6) auto 0;
+  text-align: left;
+}
 @media (max-width: 639px) {
   /* Обе кнопки — во всю ширину (до 320px), стопкой: скачивание — главный CTA, видеообзор — вторичный (ghost). */
   .app-dl__actions .btn--xl { width: 100%; max-width: 320px; }
@@ -915,6 +927,12 @@ html.js .reveal.is-shown { transition: none; }
   max-width: 34em; margin: var(--space-3) auto 0;
   font-size: var(--fs-body); line-height: 1.5;
   color: var(--color-text-secondary); text-wrap: pretty;
+}
+/* Предупреждение «только для личной установки» в шапке каталога:
+   та же карточка .warn, что на app.html, только компактнее. */
+.apps-head__note {
+  max-width: 640px; margin: var(--space-5) auto 0;
+  text-align: left;
 }
 
 .apps-sec { padding-block: var(--space-4); }
